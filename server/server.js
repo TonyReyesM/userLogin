@@ -67,7 +67,7 @@ const URI =
   MONGO_USER +
   ":" +
   encodeURIComponent(MONGO_PASSWORD) +
-  "@cluster0.tvc0o7e.mongodb.net/?retryWrites=true&w=majority";
+  "@cluster0.upkrn.mongodb.net/?retryWrites=true&w=majority";
 const mongoose = require("mongoose");
 mongoose.connect(URI, {
   useNewUrlParser: true,

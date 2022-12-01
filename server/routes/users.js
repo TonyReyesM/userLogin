@@ -9,10 +9,7 @@ const {
   updateUser,
   refreshAccessToken,
   logoutUser,
-  // getAllUsers,
-  // getUser,
-  // postUser,
-  // deleteUser,
+  deleteUser,
 } = require("../controllers/users");
 
 const { protect } = require("../middleware/authMiddleware");
@@ -27,14 +24,8 @@ router.get("/me", protect, getUser);
 
 router.put("/:id", protect, updateUser);
 
+router.delete("/:id", protect, deleteUser);
+
 router.post("/token", refreshAccessToken);
-
-// router.get("/", getAllUsers);
-
-// router.get("/:id", getUser);
-
-// router.post("/", postUser);
-
-// router.delete("/:id", deleteUser);
 
 module.exports = router;

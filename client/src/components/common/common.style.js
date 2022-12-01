@@ -1,20 +1,24 @@
 import styled from "styled-components";
 import { palette } from "../common/palette";
 
-export const PageWrapper = styled.div`
+export const PageStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 800px;
   margin: 0 auto;
+  height: 95vh;
 `;
 
 export const Title = styled.h1`
   font-size: 2rem;
   font-weight: bold;
+  text-align: center;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   border-style: solid;
   border-width: 0.2rem;
@@ -29,21 +33,22 @@ export const Form = styled.form`
 
 export const Question = styled.div`
   display: flex;
-  width: 25vw;
+  width: 24rem;
   column-gap: 1rem;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const Label = styled.label`
   font-weight: bold;
+  width: 15rem;
 `;
 
 export const Input = styled.input`
   font-size: 1rem;
-  font-weight: bold;
-  color: rgba(0, 80, 30, 0.8);
+  color: ${palette.typography.textDark};
   background-color: #dddddd;
-  width: 12vw;
+  width: 12rem;
   padding: 0.3rem 0.5rem;
   border: 2px solid transparent;
   border-radius: 0.6rem;
@@ -65,7 +70,7 @@ export const Input = styled.input`
   }
 `;
 
-export const SubmitButton = styled.button`
+export const Button = styled.button`
   background-color: ${palette.background.dark};
   border-style: none;
   border-radius: 18px;
@@ -74,12 +79,21 @@ export const SubmitButton = styled.button`
   font-weight: bold;
   text-align: center;
   display: inline-block;
-  padding: 1% 5%;
-  margin-bottom: 2rem;
+  padding: 3% 12%;
   transition: 0.2s;
+  width: fit-content;
+  align-self: flex-end;
 
   &:hover {
     background-color: rgba(200, 200, 200, 0.8);
     color: ${palette.typography.textDark};
   }
+`;
+
+export const RegisterCTA = styled.p`
+  text-align: right;
+`;
+
+export const Link = styled.a`
+  color: #6fdd99;
 `;

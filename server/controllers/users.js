@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 
 // const imageMimeTypes = ["image/jpeg", "image/png", "image/gif"];
 
-// Generate JWT
+// Generate access JWT
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -26,8 +26,8 @@ const generateRefreshToken = (id) => {
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { email, firstName, lastName, password } = req.body;
-  if (!firstName || !lastName || !password || !email) {
+  const { email, username, password } = req.body;
+  if (!username || !password || !email) {
     res.status(400);
     throw new Error("Please add all required fields");
   }
@@ -46,8 +46,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // create user
   const user = await User.create({
-    firstName,
-    lastName,
+    username,
     password: hashedPassword,
     email,
   });
@@ -62,8 +61,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       user: {
         _id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
+        username: user.username,
         email: user.email,
       },
       accessToken,
@@ -135,8 +133,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
       res.status(403);
       throw new Error("Unauthorized, failed to verify");
     }
-    console.log(user.id);
-    const accessToken = generateToken({ id: user.id });
+    const accessToken = generateToken(user.id);
     res.json({ accessToken });
   });
 });
@@ -144,33 +141,15 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 // @desc    Get user data
 // @route   GET /api/users/me
 // @access  Private
+
 const getUser = asyncHandler(async (req, res) => {
-  const {
-    _id,
-    email,
-    firstName,
-    lastName,
-    phoneNumber,
-    about,
-    city,
-    state,
-    address,
-    country,
-    photoURL,
-  } = await User.findById(req.user.id);
+  const { _id, username, email, photoURL } = await User.findById(req.user.id);
 
   res.status(200).json({
     user: {
       id: _id,
-      firstName,
-      lastName,
+      username,
       email,
-      phoneNumber,
-      country,
-      about,
-      city,
-      state,
-      address,
       photoURL,
     },
   });
@@ -182,23 +161,8 @@ const getUser = asyncHandler(async (req, res) => {
 
 const updateUser = asyncHandler(async (req, res) => {
   const _id = req.params.id;
-  console.log(_id);
-  const {
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    address,
-    country,
-    state,
-    city,
-    about,
-    photoURL,
-  } = req.body.userData;
-
-  console.log(state);
-
-  console.log(req.body.userData);
+  const { username, email, photoURL } = req.body;
+  console.log(req.body);
 
   const user = await User.findOneAndUpdate(
     {
@@ -206,22 +170,16 @@ const updateUser = asyncHandler(async (req, res) => {
     },
     {
       $set: {
-        firstName: firstName,
-        lastName: lastName,
+        username: username,
         email: email,
-        phoneNumber: phoneNumber,
-        address: address,
-        country: country,
-        state: state,
-        city: city,
-        about: about,
         photoURL: photoURL,
       },
     },
     { returnOriginal: false }
   );
 
-  console.log(user);
+  // const newUsername = user.username;
+  // const newEmail = user.email;
 
   res.status(200).json({
     message: "Updated user",
@@ -229,17 +187,20 @@ const updateUser = asyncHandler(async (req, res) => {
   });
 });
 
-// const getAllUsers = async (req, res) => {
-//   res.status(200).json({ message: "Get user" });
-// };
+// @desc    Delete user
+// @route   DELETE /api/users/:id
+// @access  Private
 
-// const postUser = async (req, res) => {
-//   res.status(200).json({ message: "Post user" });
-// };
+const deleteUser = asyncHandler(async (req, res) => {
+  const _id = req.params.id;
 
-// const deleteUser = async (req, res) => {
-//   res.status(200).json({ message: "Delete user" });
-// };
+  const user = await User.deleteOne({ _id });
+
+  res.status(200).json({
+    messsage: "Deleted user",
+    user,
+  });
+});
 
 module.exports = {
   loginUser,
@@ -248,8 +209,5 @@ module.exports = {
   getUser,
   updateUser,
   refreshAccessToken,
-  // getAllUsers,
-  // getUser,
-  // postUser,
-  // deleteUser,
+  deleteUser,
 };
