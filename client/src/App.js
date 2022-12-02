@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 //  styles
-import { PageStyle } from "./components/common/common.style";
+import { WebsiteStyle } from "./components/common/common.style";
 
 //  layouts
 import UserLoginLayout from "./layouts/loginLayout";
@@ -17,7 +17,7 @@ import UserPage from "./pages/userPage";
 
 function App() {
   return (
-    <PageStyle>
+    <WebsiteStyle>
       <Routes>
         <Route path="/" element={<UserLoginLayout />}>
           <Route path="/register" element={<RegisterPage />} />
@@ -28,7 +28,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-    </PageStyle>
+    </WebsiteStyle>
   );
 }
 

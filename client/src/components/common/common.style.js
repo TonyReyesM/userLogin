@@ -1,12 +1,21 @@
 import styled from "styled-components";
 import { palette } from "../common/palette";
 
+export const WebsiteStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 95vh;
+`;
+
 export const PageStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 800px;
-  margin: 0 auto;
+  padding-top: 5rem;
   height: 95vh;
 `;
 
@@ -98,11 +107,14 @@ export const Link = styled.a`
   color: #6fdd99;
 `;
 
-export const Bar = styled.div`
+export const Header = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 1vw;
   width: 98vw;
+  max-height: 5rem;
   background-color: ${palette.background.light};
   color: ${palette.typography.textLight};
   border-style: solid;
@@ -111,4 +123,27 @@ export const Bar = styled.div`
   border-color: ghostwhite;
   padding: 1rem;
   margin-top: 0.5rem;
+`;
+
+export const NavBarSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1rem;
+  margin: 0 2rem;
+`;
+
+export const LoadingSign = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${palette.typography.textLight};
+  font-size: 24px;
+`;
+
+export const FieldAlert = styled.div`
+  text-align: end;
+  color: ${palette.typography.alert};
+  font-weight: bold;
+  width: 24rem;
 `;

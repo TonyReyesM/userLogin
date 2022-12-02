@@ -1,7 +1,13 @@
+//  components
 import { Outlet } from "react-router-dom";
+
+//  hooks
 import { useState, useEffect } from "react";
 import useRefreshToken from "../hooks/useRefreshToken";
 import useAuth from "../hooks/useAuth";
+
+//  styles
+import { LoadingSign } from "./common/common.style";
 
 const PersistLogin = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,7 +33,7 @@ const PersistLogin = () => {
   //   console.log(`accessToken: ${JSON.stringify(auth?.accessToken)}`);
   // });
 
-  return <>{isLoading ? <p>Loading...</p> : <Outlet />}</>;
+  return <>{isLoading ? <LoadingSign>Loading</LoadingSign> : <Outlet />}</>;
 };
 
 export default PersistLogin;

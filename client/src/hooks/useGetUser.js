@@ -14,6 +14,8 @@ const useGetUser = () => {
         // signal: controller.signal,
       });
       const { user } = response.data;
+      localStorage.setItem("user", JSON.stringify(user));
+
       return user;
     } catch (error) {
       console.log(error);

@@ -8,5 +8,6 @@ export const palette = {
     title: "#027227b3",
     textDark: "#0000008f",
     textLight: "#ffffffdc",
+    alert: "#ff5555",
   },
 };

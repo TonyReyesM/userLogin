@@ -1,8 +1,13 @@
-import { yupResolver } from "@hookform/resolvers/yup";
+// components
+import { Link } from "react-router-dom";
 
 //  hooks
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import useRegisterUser from "../hooks/useRegisterUser";
+
+//  validations
+import { userRegisterSchema } from "../validations/userRegisterValidation";
 
 //  styles
 import {
@@ -12,10 +17,15 @@ import {
   Label,
   Input,
   Button,
+  RegisterCTA,
+  FieldAlert,
 } from "./common/common.style";
+import { palette } from "./common/palette";
 
-//  validations
-import { userRegisterSchema } from "../validations/userRegisterValidation";
+const linkStyle = {
+  color: palette.background.dark,
+  fontWeight: "bold",
+};
 
 const RegisterForm = () => {
   const registerUser = useRegisterUser();
@@ -37,18 +47,18 @@ const RegisterForm = () => {
       <Question>
         <Label>Username</Label>
         <Input id="username" {...register("username")} />
-        <p>{errors.username?.message}</p>
       </Question>
+      {errors.username && <FieldAlert>{errors.username?.message}</FieldAlert>}
       <Question>
         <Label>Email</Label>
         <Input id="email" {...register("email")} />
-        <p>{errors.email?.message}</p>
       </Question>
+      {errors.email && <FieldAlert>{errors.email?.message}</FieldAlert>}
       <Question>
         <Label>Password</Label>
         <Input type="password" id="password" {...register("password")} />
-        <p>{errors.password?.message}</p>
       </Question>
+      {errors.password && <FieldAlert>{errors.password?.message}</FieldAlert>}
       <Question>
         <Label>Confirm password</Label>
         <Input
@@ -56,9 +66,17 @@ const RegisterForm = () => {
           id="confimPassword"
           {...register("confirmPassword")}
         />
-        <p>{errors.confirmPassword?.message}</p>
       </Question>
+      {errors.confirmPassword && (
+        <FieldAlert>{errors.confirmPassword?.message}</FieldAlert>
+      )}
       <Button type="submit">Sign up</Button>
+      <RegisterCTA>
+        Already have an account?{" "}
+        <Link to="/login" style={linkStyle}>
+          Sign in
+        </Link>
+      </RegisterCTA>
     </Form>
   );
 };

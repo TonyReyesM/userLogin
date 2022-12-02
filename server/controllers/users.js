@@ -63,6 +63,7 @@ const registerUser = asyncHandler(async (req, res) => {
         _id: user.id,
         username: user.username,
         email: user.email,
+        photoURL,
       },
       accessToken,
       refreshToken: refreshToken.token,
@@ -91,7 +92,12 @@ const loginUser = asyncHandler(async (req, res) => {
     });
 
     res.json({
-      user,
+      user: {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        photoURL: user.photoURL,
+      },
       accessToken,
       refreshToken: refreshToken.token,
     });
@@ -143,15 +149,17 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 // @access  Private
 
 const getUser = asyncHandler(async (req, res) => {
+  // const { _id, username, email, photoURL } = await User.findById(req.user.id);
   const { _id, username, email, photoURL } = await User.findById(req.user.id);
 
   res.status(200).json({
     user: {
-      id: _id,
+      _id: _id,
       username,
       email,
       photoURL,
     },
+    // user,
   });
 });
 

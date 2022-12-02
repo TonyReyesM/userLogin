@@ -15,6 +15,7 @@ import {
   Input,
   Button,
   RegisterCTA,
+  FieldAlert,
 } from "./common/common.style";
 import { palette } from "./common/palette";
 
@@ -49,8 +50,8 @@ const LoginForm = () => {
       <Question>
         <Label>Email</Label>
         <Input id="email" {...register("email", { required: true })} />
-        <p>{errors?.email?.message}</p>
       </Question>
+      {errors.email && <FieldAlert>{errors?.email?.message}</FieldAlert>}
       <Question>
         <Label>Password</Label>
         <Input
@@ -58,9 +59,9 @@ const LoginForm = () => {
           id="password"
           {...register("password", { required: true })}
         />
-        <p>{errors.password?.message}</p>
       </Question>
-      <Button type="submit">Login</Button>
+      {errors.password && <FieldAlert>{errors.password?.message}</FieldAlert>}
+      <Button type="submit">Sign in</Button>
       <RegisterCTA>
         Not a user yet?{" "}
         <Link to="/register" style={linkStyle}>

@@ -6,6 +6,9 @@ const useRefreshToken = () => {
   const { auth, setAuth } = useAuth();
   // const getUser = useGetUser();
 
+  const user = auth.user ? auth.user : JSON.parse(localStorage.getItem("user"));
+  console.log(user);
+
   const refreshToken = auth.refreshToken
     ? auth.refreshToken
     : localStorage.getItem("refreshToken");
@@ -17,14 +20,7 @@ const useRefreshToken = () => {
     console.log(response.data);
     localStorage.setItem("accessToken", response.data.accessToken);
 
-    setAuth((prev) => {
-      console.log(JSON.stringify(prev));
-      console.log(response.data.accessToken);
-      return {
-        ...prev,
-        accessToken: response.data.accessToken,
-      };
-    });
+    setAuth({ user, accessToken: response.data.accessToken, refreshToken });
     // setAuth({ accessToken: response.data.accessToken, refreshToken });
     return response.data.accessToken;
   };

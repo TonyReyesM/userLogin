@@ -1,11 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 
 //  hooks
-import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useUpdateUser from "../hooks/useUpdateUser";
 import useAuth from "../hooks/useAuth";
-import useGetUser from "../hooks/useGetUser";
 
 //  styles
 import {
@@ -15,17 +13,15 @@ import {
   Question,
   Label,
   Button,
+  FieldAlert,
 } from "./common/common.style";
 
 //  validations
 import { updateUserSchema } from "../validations/updateUserValidation";
 
 const UpdateUserForm = () => {
-  const [placeholders, setPlaceholders] = useState({});
-  const [user, setUser] = useState();
   const updateUser = useUpdateUser();
-  const getUser = useGetUser();
-  const { auth, setAuth } = useAuth();
+  const { auth } = useAuth();
 
   const {
     register,
@@ -33,26 +29,11 @@ const UpdateUserForm = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      username: placeholders.username,
-      email: placeholders.email,
+      username: auth.user.username,
+      email: auth.user.email,
     },
     resolver: yupResolver(updateUserSchema),
   });
-
-  //  Fix this
-  useEffect(() => {
-    (async () => {
-      const currentUser = await getUser();
-      setUser(currentUser);
-      console.log(user);
-      setPlaceholders({
-        username: user?.username,
-        email: user?.email,
-      });
-      console.log(placeholders);
-      setAuth({ ...auth, user });
-    })();
-  }, []);
 
   const onSubmit = (userData) => {
     updateUser(userData);
@@ -61,16 +42,19 @@ const UpdateUserForm = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Title>Account</Title>
+
+      <Input type="image" />
+
       <Question>
         <Label>Username</Label>
         <Input id="username" {...register("username")} />
-        <p>{errors.username?.message}</p>
       </Question>
+      {errors.username && <FieldAlert>{errors.username?.message}</FieldAlert>}
       <Question>
         <Label>Email</Label>
         <Input id="email" {...register("email")} />
-        <p>{errors.email?.message}</p>
       </Question>
+      {errors.email && <FieldAlert>{errors.email?.message}</FieldAlert>}
       <Button type="submit">Update</Button>
     </Form>
   );
