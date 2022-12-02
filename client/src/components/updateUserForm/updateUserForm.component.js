@@ -1,10 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 
 //  hooks
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import useUpdateUser from "../../hooks/useUpdateUser";
 import useAuth from "../../hooks/useAuth";
+import useGetUser from "../../hooks/useGetUser";
 
 //  styles
 import {
@@ -20,29 +21,40 @@ import {
 import { updateUserSchema } from "../../validations/updateUserValidation";
 
 export const UpdateUserForm = () => {
+  const [placeholders, setPlaceholders] = useState({});
+  const [user, setUser] = useState();
   const updateUser = useUpdateUser();
-  const { auth } = useAuth();
-
-  let user = auth.user;
+  const getUser = useGetUser();
+  const { auth, setAuth } = useAuth();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    // defaultValues: {
-    //   username: auth.user.username,
-    //   email: auth.user.email,
-    // },
+    defaultValues: {
+      username: placeholders.username,
+      email: placeholders.email,
+    },
     resolver: yupResolver(updateUserSchema),
   });
 
+  //  Fix this
   useEffect(() => {
-    user = auth.user;
-  }, [auth]);
+    (async () => {
+      const currentUser = await getUser();
+      setUser(currentUser);
+      console.log(user);
+      setPlaceholders({
+        username: user?.username,
+        email: user?.email,
+      });
+      console.log(placeholders);
+      setAuth({ ...auth, user });
+    })();
+  }, []);
 
   const onSubmit = (userData) => {
-    console.log(userData);
     updateUser(userData);
   };
 
