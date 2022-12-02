@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 //  hooks
 import { useForm } from "react-hook-form";
-import useRegisterUser from "../../hooks/useRegisterUser";
+import useRegisterUser from "../hooks/useRegisterUser";
 
 //  styles
 import {
@@ -12,12 +12,12 @@ import {
   Label,
   Input,
   Button,
-} from "../common/common.style";
+} from "./common/common.style";
 
 //  validations
-import { userRegisterSchema } from "../../validations/userRegisterValidation";
+import { userRegisterSchema } from "../validations/userRegisterValidation";
 
-export const RegisterForm = () => {
+const RegisterForm = () => {
   const registerUser = useRegisterUser();
   const {
     register,
@@ -62,3 +62,5 @@ export const RegisterForm = () => {
     </Form>
   );
 };
+
+export default RegisterForm;

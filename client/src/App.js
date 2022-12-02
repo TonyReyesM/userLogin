@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { PageStyle } from "./components/common/common.style";
 
 //  layouts
-import { UserLoginLayout } from "./layouts/loginLayout/loginLayout";
+import UserLoginLayout from "./layouts/loginLayout";
 
 //  components
 import PersistLogin from "./components/persistLogin";

@@ -1,9 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import NavBar from "../../components/navBar";
+import NavBar from "../components/navBar";
 
-export const UserLoginLayout = () => {
+const UserLoginLayout = () => {
   return (
     <>
       <NavBar />
@@ -11,3 +11,5 @@ export const UserLoginLayout = () => {
     </>
   );
 };
+
+export default UserLoginLayout;

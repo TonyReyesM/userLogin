@@ -3,9 +3,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 //  hooks
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import useUpdateUser from "../../hooks/useUpdateUser";
-import useAuth from "../../hooks/useAuth";
-import useGetUser from "../../hooks/useGetUser";
+import useUpdateUser from "../hooks/useUpdateUser";
+import useAuth from "../hooks/useAuth";
+import useGetUser from "../hooks/useGetUser";
 
 //  styles
 import {
@@ -15,12 +15,12 @@ import {
   Question,
   Label,
   Button,
-} from "../common/common.style";
+} from "./common/common.style";
 
 //  validations
-import { updateUserSchema } from "../../validations/updateUserValidation";
+import { updateUserSchema } from "../validations/updateUserValidation";
 
-export const UpdateUserForm = () => {
+const UpdateUserForm = () => {
   const [placeholders, setPlaceholders] = useState({});
   const [user, setUser] = useState();
   const updateUser = useUpdateUser();
@@ -75,3 +75,5 @@ export const UpdateUserForm = () => {
     </Form>
   );
 };
+
+export default UpdateUserForm;

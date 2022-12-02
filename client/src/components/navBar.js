@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { Bar } from "./navBar.style";
+import { Bar } from "./common/common.style";
 
-import { palette } from "../common/palette";
+import { palette } from "./common/palette";
 
 const linkStyle = {
   color: palette.typography.textLight,
   fontWeight: "bold",
 };
 
-export const NavBar = () => {
+const NavBar = () => {
   return (
     <Bar>
       <Link to="/login" style={linkStyle}>
@@ -22,3 +22,5 @@ export const NavBar = () => {
     </Bar>
   );
 };
+
+export default NavBar;
