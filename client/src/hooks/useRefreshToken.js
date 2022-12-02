@@ -7,7 +7,6 @@ const useRefreshToken = () => {
   // const getUser = useGetUser();
 
   const user = auth.user ? auth.user : JSON.parse(localStorage.getItem("user"));
-  console.log(user);
 
   const refreshToken = auth.refreshToken
     ? auth.refreshToken

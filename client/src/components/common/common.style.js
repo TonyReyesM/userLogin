@@ -29,6 +29,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   border-style: solid;
   border-width: 0.2rem;
   border-radius: 1rem;

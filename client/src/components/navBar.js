@@ -42,7 +42,9 @@ const NavBar = () => {
 
   return (
     <Header>
-      <Title>LoginDude</Title>
+      <Link to="/">
+        <Title>LoginDude</Title>
+      </Link>
 
       <NavBarSection>
         {!auth.accessToken ? (

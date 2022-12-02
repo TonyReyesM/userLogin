@@ -43,7 +43,7 @@ const UpdateUserForm = () => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Title>Account</Title>
 
-      <Input type="image" />
+      <Input type="file" id="photoURL" {...register("photoURL")} />
 
       <Question>
         <Label>Username</Label>
@@ -55,7 +55,7 @@ const UpdateUserForm = () => {
         <Input id="email" {...register("email")} />
       </Question>
       {errors.email && <FieldAlert>{errors.email?.message}</FieldAlert>}
-      <Button type="submit">Update</Button>
+      <Button type="submit">Save</Button>
     </Form>
   );
 };
