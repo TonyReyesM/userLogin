@@ -48,12 +48,12 @@ const LoginForm = () => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Title>User login</Title>
       <Question>
-        <Label>Email</Label>
+        <Label htmlFor="email">Email</Label>
         <Input id="email" {...register("email", { required: true })} />
       </Question>
       {errors.email && <FieldAlert>{errors?.email?.message}</FieldAlert>}
       <Question>
-        <Label>Password</Label>
+        <Label htmlFor="password">Password</Label>
         <Input
           type="password"
           id="password"

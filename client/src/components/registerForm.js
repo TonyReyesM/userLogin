@@ -45,25 +45,25 @@ const RegisterForm = () => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Title>Sign up now!</Title>
       <Question>
-        <Label>Username</Label>
+        <Label htmlFor="username">Username</Label>
         <Input id="username" {...register("username")} />
       </Question>
       {errors.username && <FieldAlert>{errors.username?.message}</FieldAlert>}
       <Question>
-        <Label>Email</Label>
+        <Label htmlFor="email">Email</Label>
         <Input id="email" {...register("email")} />
       </Question>
       {errors.email && <FieldAlert>{errors.email?.message}</FieldAlert>}
       <Question>
-        <Label>Password</Label>
+        <Label htmlFor="password">Password</Label>
         <Input type="password" id="password" {...register("password")} />
       </Question>
       {errors.password && <FieldAlert>{errors.password?.message}</FieldAlert>}
       <Question>
-        <Label>Confirm password</Label>
+        <Label htmlFor="confirmPassword">Confirm password</Label>
         <Input
           type="password"
-          id="confimPassword"
+          id="confirmPassword"
           {...register("confirmPassword")}
         />
       </Question>

@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const express = require("express");
+const fileupload = require("express-fileupload");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
 const cors = require("cors");
@@ -43,6 +44,12 @@ app.use(
 // app.set("views", __dirname + "/views"); //Configuramos el directorio de vistas a utilizar
 // app.set("layout", "layouts/layout"); //Escogemos la dirección del archivo layout que servirá para no tener que duplicar el HTML
 // app.use(expressLayouts);
+
+app.use(
+  fileupload({
+    createParentPath: true,
+  })
+);
 
 app.use(express.static("public")); //Indicamos la dirección de los archivos públicos
 app.use(express.json());

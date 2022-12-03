@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-// const imageMimeTypes = ["image/jpeg", "image/png", "image/gif"];
+const imageMimeTypes = ["image/jpeg", "image/png", "image/gif"];
 
 // Generate access JWT
 
@@ -63,7 +63,6 @@ const registerUser = asyncHandler(async (req, res) => {
         _id: user.id,
         username: user.username,
         email: user.email,
-        photoURL,
       },
       accessToken,
       refreshToken: refreshToken.token,
@@ -96,7 +95,7 @@ const loginUser = asyncHandler(async (req, res) => {
         _id: user._id,
         username: user.username,
         email: user.email,
-        photoURL: user.photoURL,
+        photo: user.photo,
       },
       accessToken,
       refreshToken: refreshToken.token,
@@ -149,15 +148,14 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 // @access  Private
 
 const getUser = asyncHandler(async (req, res) => {
-  // const { _id, username, email, photoURL } = await User.findById(req.user.id);
-  const { _id, username, email, photoURL } = await User.findById(req.user.id);
+  const { _id, username, email, photo } = await User.findById(req.user.id);
 
   res.status(200).json({
     user: {
       _id: _id,
       username,
       email,
-      photoURL,
+      photo,
     },
     // user,
   });
@@ -169,7 +167,7 @@ const getUser = asyncHandler(async (req, res) => {
 
 const updateUser = asyncHandler(async (req, res) => {
   const _id = req.params.id;
-  const { username, email, photoURL } = req.body;
+  const { username, email, photo } = req.body;
   console.log(req.body);
 
   const user = await User.findOneAndUpdate(
@@ -180,7 +178,7 @@ const updateUser = asyncHandler(async (req, res) => {
       $set: {
         username: username,
         email: email,
-        photoURL: photoURL,
+        photo: photo,
       },
     },
     { returnOriginal: false }
@@ -192,6 +190,11 @@ const updateUser = asyncHandler(async (req, res) => {
   res.status(200).json({
     message: "Updated user",
     user,
+    // photo: {
+    //   name: photo.name,
+    //   mimetype: photo.mimetype,
+    //   size: photo.size,
+    // },
   });
 });
 

@@ -80,6 +80,10 @@ export const Input = styled.input`
   }
 `;
 
+export const ImgInput = styled.input`
+  display: none;
+`;
+
 export const Button = styled.button`
   background-color: ${palette.background.dark};
   border-style: none;
@@ -147,4 +151,27 @@ export const FieldAlert = styled.div`
   color: ${palette.typography.alert};
   font-weight: bold;
   width: 24rem;
+`;
+
+export const AvatarImg = styled.img`
+  width: 8rem;
+  object-fit: cover;
+  z-index: 2;
+  position: absolute;
+  border: 50%;
+`;
+
+export const AvatarWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dddddd;
+  flex-direction: column;
+  width: 8rem;
+  height: 8rem;
+  z-index: 1;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.2rem;
+  border-color: ghostwhite;
 `;

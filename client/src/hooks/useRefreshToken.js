@@ -4,7 +4,6 @@ import useAuth from "./useAuth";
 
 const useRefreshToken = () => {
   const { auth, setAuth } = useAuth();
-  // const getUser = useGetUser();
 
   const user = auth.user ? auth.user : JSON.parse(localStorage.getItem("user"));
 
@@ -13,10 +12,7 @@ const useRefreshToken = () => {
     : localStorage.getItem("refreshToken");
 
   const refresh = async () => {
-    console.log("Refreshing token");
     const response = await axios.post("/api/users/token", { refreshToken });
-    // const user = await getUser();
-    console.log(response.data);
     localStorage.setItem("accessToken", response.data.accessToken);
 
     setAuth({ user, accessToken: response.data.accessToken, refreshToken });

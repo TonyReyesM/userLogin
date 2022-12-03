@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const imageMimeTypes = ["image/jpeg", "image/png", "image/gif"];
+
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -15,8 +17,9 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    photoURL: {
+    photo: {
       type: Buffer,
+      contentType: String,
     },
   },
   {

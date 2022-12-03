@@ -10,11 +10,20 @@ const useUpdateUser = () => {
   const updateUser = async (userData) => {
     const user = await getUser();
     try {
+      const formData = new FormData();
+
+      formData.append("username", userData.username);
+      formData.append("email", userData.email);
+      formData.append("photo", userData.photo[0]);
+
+      console.log(formData);
+
       const response = await axiosPrivate.put(
         `/api/users/${user?._id}`,
-        userData
+        formData
       );
       const newUser = response.data.user;
+      console.log(newUser);
       localStorage.setItem("user", JSON.stringify(newUser));
       setAuth({ ...auth, user: newUser });
     } catch (error) {
