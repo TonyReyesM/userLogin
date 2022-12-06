@@ -11,7 +11,7 @@ import useAuth from "../hooks/useAuth";
 import { updateUserSchema } from "../validations/updateUserValidation";
 
 //  components
-import ProfilePicture from "./profilePicture";
+// import ProfilePicture from "./profilePicture";
 
 //  assets
 import { AlienProfile } from "../assets";
@@ -55,12 +55,13 @@ const UpdateUserForm = () => {
   const updateUser = useUpdateUser();
   const { auth } = useAuth();
   const imgInput = useRef();
-  const [image, setImage] = useState(null);
 
+  const [image, setImage] = useState(auth.user.photo || null);
+
+  // react hook form
   const {
     register,
     handleSubmit,
-    formState,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -69,20 +70,21 @@ const UpdateUserForm = () => {
     },
     resolver: yupResolver(updateUserSchema),
   });
-
   const { ref } = register("photo");
+
+  //  callbacks
 
   const onSubmit = (userData) => {
     updateUser(userData);
-    setImage(null);
   };
 
   const handleClick = (e) => {
     imgInput.current.click();
   };
 
-  const onChangePicture = (e) => {
-    setImage(URL.createObjectURL(e.target.files[0]));
+  const onChangePicture = async (e) => {
+    const imageFile = e.target.files[0];
+    setImage(URL.createObjectURL(imageFile));
   };
 
   return (
@@ -91,11 +93,14 @@ const UpdateUserForm = () => {
 
       <AvatarWrapper>
         <ImgLabel htmlFor="photo">
-          <AvatarImg src={auth.user.photo || image || AlienProfile} />
+          <AvatarImg src={image || AlienProfile} />
           <ImgInput
             type="file"
             id="photo"
-            onChange={onChangePicture}
+            accept="image/*"
+            {...register("photo", {
+              onChange: onChangePicture,
+            })}
             ref={(e) => {
               ref(e);
               imgInput.current = e;

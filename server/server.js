@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const fileupload = require("express-fileupload");
+const path = require("path");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
 const cors = require("cors");

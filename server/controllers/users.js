@@ -169,6 +169,9 @@ const updateUser = asyncHandler(async (req, res) => {
   const _id = req.params.id;
   const { username, email, photo } = req.body;
   console.log(req.body);
+  console.log(req.body.username);
+  console.log(req.body.email);
+  console.log(req.body.photo);
 
   const user = await User.findOneAndUpdate(
     {

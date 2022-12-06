@@ -18,8 +18,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
     },
     photo: {
-      type: Buffer,
-      contentType: String,
+      type: String,
     },
   },
   {
