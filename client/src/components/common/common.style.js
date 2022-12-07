@@ -134,7 +134,7 @@ export const NavBarSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 1rem;
+  column-gap: 1.5rem;
   margin: 0 2rem;
 `;
 
@@ -155,10 +155,11 @@ export const FieldAlert = styled.div`
 
 export const AvatarImg = styled.img`
   width: 8rem;
+  height: 8rem;
   object-fit: cover;
   z-index: 2;
   position: absolute;
-  border: 50%;
+  border-radius: 50%;
 `;
 
 export const AvatarWrapper = styled.div`

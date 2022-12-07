@@ -8,8 +8,18 @@ import { useNavigate } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
 import useAuth from "../hooks/useAuth";
 
+//  assets
+import { AlienProfile } from "../assets";
+
 //  styles
-import { Header, Button, Title, NavBarSection } from "./common/common.style";
+import {
+  Header,
+  Button,
+  Title,
+  NavBarSection,
+  AvatarImg,
+  AvatarWrapper,
+} from "./common/common.style";
 import { palette } from "./common/palette";
 
 const LogButton = styled(Button)`
@@ -23,6 +33,18 @@ const linkStyle = {
   color: palette.typography.textLight,
   fontWeight: "bold",
   textDecoration: "none",
+};
+
+const avatarStyle = {
+  position: "static",
+  width: "3rem",
+  height: "3rem",
+};
+
+const avatarWrapperStyle = {
+  position: "static",
+  width: "3rem",
+  height: "3rem",
 };
 
 const NavBar = () => {
@@ -45,7 +67,20 @@ const NavBar = () => {
             </Link>
           </>
         ) : (
-          <LogButton onClick={logout}>Log out</LogButton>
+          <>
+            <Link to={`/user/${auth.user._id}`}>
+              <AvatarWrapper style={avatarWrapperStyle}>
+                <AvatarImg
+                  src={auth.user.photo || AlienProfile}
+                  style={avatarStyle}
+                />
+              </AvatarWrapper>
+            </Link>
+            <Link to={`/user/${auth.user._id}`} style={linkStyle}>
+              <Title>{auth.user.username}</Title>
+            </Link>
+            <LogButton onClick={logout}>Log out</LogButton>
+          </>
         )}
       </NavBarSection>
     </Header>

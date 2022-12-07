@@ -152,12 +152,11 @@ const getUser = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     user: {
-      _id: _id,
+      _id,
       username,
       email,
       photo,
     },
-    // user,
   });
 });
 
@@ -168,10 +167,6 @@ const getUser = asyncHandler(async (req, res) => {
 const updateUser = asyncHandler(async (req, res) => {
   const _id = req.params.id;
   const { username, email, photo } = req.body;
-  console.log(req.body);
-  console.log(req.body.username);
-  console.log(req.body.email);
-  console.log(req.body.photo);
 
   const user = await User.findOneAndUpdate(
     {
@@ -187,17 +182,14 @@ const updateUser = asyncHandler(async (req, res) => {
     { returnOriginal: false }
   );
 
-  // const newUsername = user.username;
-  // const newEmail = user.email;
-
   res.status(200).json({
     message: "Updated user",
-    user,
-    // photo: {
-    //   name: photo.name,
-    //   mimetype: photo.mimetype,
-    //   size: photo.size,
-    // },
+    user: {
+      _id,
+      username,
+      email,
+      photo,
+    },
   });
 });
 
