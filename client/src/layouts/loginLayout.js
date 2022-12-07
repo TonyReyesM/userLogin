@@ -1,18 +1,17 @@
 //  hooks
 import useAuth from "../hooks/useAuth";
-// import useTheme from "../hooks/useTheme";
 import { useEffect } from "react";
 
 //  components
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/navBar";
+import SideBar from "../components/sideBar";
 
 //  styles
 import { PageStyle } from "../components/common/common.style";
 
 const UserLoginLayout = () => {
   const { auth, setAuth } = useAuth();
-  // const {theme} = useTheme()
 
   useEffect(() => {
     if (!auth.user && localStorage.getItem("accessToken")) {
@@ -26,9 +25,12 @@ const UserLoginLayout = () => {
   return (
     <>
       <NavBar />
-      <PageStyle>
-        <Outlet />
-      </PageStyle>
+      <div>
+        <SideBar />
+        <PageStyle>
+          <Outlet />
+        </PageStyle>
+      </div>
     </>
   );
 };

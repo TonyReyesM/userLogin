@@ -41,14 +41,14 @@ const linkStyle = {
 
 const avatarStyle = {
   position: "static",
-  width: "3rem",
-  height: "3rem",
+  width: "2.5rem",
+  height: "2.5rem",
 };
 
 const avatarWrapperStyle = {
   position: "static",
-  width: "3rem",
-  height: "3rem",
+  width: "2.5rem",
+  height: "2.5rem",
 };
 
 const NavBar = () => {
@@ -71,8 +71,8 @@ const NavBar = () => {
         {!auth.accessToken ? (
           <>
             <LogButton onClick={() => navigate("/login")}>Login</LogButton>
-            <Link to="/register" style={linkStyle}>
-              Register
+            <Link to="/register" style={{ ...linkStyle, width: "5rem" }}>
+              Sign Up
             </Link>
           </>
         ) : (
@@ -86,17 +86,13 @@ const NavBar = () => {
               </AvatarWrapper>
             </Link>
             <Link to={`/user/${auth.user._id}`} style={linkStyle}>
-              <Title>{auth.user.username}</Title>
+              <Title style={{ fontSize: "1.5rem" }}>{auth.user.username}</Title>
             </Link>
             <LogButton onClick={logout}>Log out</LogButton>
           </>
         )}
-        <ThemeButton>
-          {theme === "light" ? (
-            <DarkModeIcon onClick={changeTheme} />
-          ) : (
-            <LightModeIcon onClick={changeTheme} />
-          )}
+        <ThemeButton onClick={changeTheme}>
+          {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
         </ThemeButton>
       </NavBarSection>
     </Header>
