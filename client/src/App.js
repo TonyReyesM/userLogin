@@ -1,5 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
+//  hooks
+import { useEffect } from "react";
+import useTheme from "./hooks/useTheme";
+
 //  styles
 import { WebsiteStyle } from "./components/common/common.style";
 
@@ -15,6 +19,13 @@ import RegisterPage from "./pages/registerPage";
 import UserPage from "./pages/userPage";
 
 function App() {
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    document.body.style.backgroundColor =
+      theme === "light" ? "#fafafa" : "#06060f";
+  }, [theme]);
+
   return (
     <WebsiteStyle>
       <Routes>

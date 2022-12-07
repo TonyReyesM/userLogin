@@ -92,7 +92,7 @@ export const Button = styled.button`
   font-size: 1em;
   font-weight: bold;
   text-align: center;
-  display: inline-block;
+  display: flex;
   padding: 3% 12%;
   transition: 0.2s;
   width: fit-content;
@@ -175,4 +175,10 @@ export const AvatarWrapper = styled.div`
   border-style: solid;
   border-width: 0.2rem;
   border-color: ghostwhite;
+`;
+
+export const ThemeButton = styled(Button)`
+  align-self: center;
+  padding: 3.5% 3.5%;
+  border-radius: 50%;
 `;

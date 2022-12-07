@@ -1,5 +1,6 @@
 //  hooks
 import useAuth from "../hooks/useAuth";
+// import useTheme from "../hooks/useTheme";
 import { useEffect } from "react";
 
 //  components
@@ -11,6 +12,7 @@ import { PageStyle } from "../components/common/common.style";
 
 const UserLoginLayout = () => {
   const { auth, setAuth } = useAuth();
+  // const {theme} = useTheme()
 
   useEffect(() => {
     if (!auth.user && localStorage.getItem("accessToken")) {

@@ -7,9 +7,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
 import useAuth from "../hooks/useAuth";
+import useTheme from "../hooks/useTheme";
 
 //  assets
 import { AlienProfile } from "../assets";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 //  styles
 import {
@@ -19,6 +22,7 @@ import {
   NavBarSection,
   AvatarImg,
   AvatarWrapper,
+  ThemeButton,
 } from "./common/common.style";
 import { palette } from "./common/palette";
 
@@ -49,8 +53,13 @@ const avatarWrapperStyle = {
 
 const NavBar = () => {
   const { auth } = useAuth();
+  const { theme, setTheme } = useTheme();
   const logout = useLogout();
   const navigate = useNavigate();
+
+  const changeTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   return (
     <Header>
@@ -82,6 +91,13 @@ const NavBar = () => {
             <LogButton onClick={logout}>Log out</LogButton>
           </>
         )}
+        <ThemeButton>
+          {theme === "light" ? (
+            <DarkModeIcon onClick={changeTheme} />
+          ) : (
+            <LightModeIcon onClick={changeTheme} />
+          )}
+        </ThemeButton>
       </NavBarSection>
     </Header>
   );
