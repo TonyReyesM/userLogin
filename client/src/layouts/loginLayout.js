@@ -7,16 +7,17 @@ import { useEffect } from "react";
 //  components
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/navBar";
-import SideBar from "../components/sideBar";
+// import SideBar from "../components/sideBar";
 
 //  styles
 import { PageStyle } from "../components/common/common.style";
 
 const Wrapper = styled.div`
   display: flex;
+  position: relative;
+  top: 10rem;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 5rem;
 `;
 
 const UserLoginLayout = () => {
