@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 //  hooks
 import useAuth from "../hooks/useAuth";
 import { useEffect } from "react";
@@ -9,6 +11,13 @@ import SideBar from "../components/sideBar";
 
 //  styles
 import { PageStyle } from "../components/common/common.style";
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 5rem;
+`;
 
 const UserLoginLayout = () => {
   const { auth, setAuth } = useAuth();
@@ -25,12 +34,12 @@ const UserLoginLayout = () => {
   return (
     <>
       <NavBar />
-      <div>
-        <SideBar />
+      <Wrapper>
+        {/* <SideBar /> */}
         <PageStyle>
           <Outlet />
         </PageStyle>
-      </div>
+      </Wrapper>
     </>
   );
 };

@@ -15,8 +15,7 @@ export const PageStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5rem;
-  height: 95vh;
+  height: fit-content;
 `;
 
 export const Title = styled.h1`
@@ -130,6 +129,20 @@ export const Header = styled.div`
   margin-top: 0.5rem;
 `;
 
+export const Bar = styled.div`
+  background-color: ${palette.typography.textLight};
+  color: ${palette.typography.textDark};
+  opacity: 0.8;
+  border-style: solid;
+  border-width: 0.2rem;
+  border-radius: 0.2rem;
+  border-color: ghostwhite;
+  margin: 3vw;
+  padding: 3vw;
+  width: 20vw;
+  height: 70vh;
+`;
+
 export const NavBarSection = styled.div`
   display: flex;
   justify-content: center;
@@ -143,7 +156,13 @@ export const LoadingSign = styled.div`
   justify-content: center;
   align-items: center;
   color: ${palette.typography.textLight};
-  font-size: 24px;
+  position: fixed;
+  top: 40vh;
+  border-style: solid;
+  border-color: ${palette.typography.textLight};
+  border-width: 5px;
+  border-radius: 50%;
+  padding: 2rem;
 `;
 
 export const FieldAlert = styled.div`

@@ -6,8 +6,16 @@ import { useState, useEffect } from "react";
 import useRefreshToken from "../hooks/useRefreshToken";
 import useAuth from "../hooks/useAuth";
 
+//  assets
+import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
+
 //  styles
 import { LoadingSign } from "./common/common.style";
+
+const iconStyle = {
+  height: "8rem",
+  width: "8rem",
+};
 
 const PersistLogin = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,12 +36,17 @@ const PersistLogin = () => {
     !auth?.accessToken ? verifyRefreshToken() : setIsLoading(false);
   }, []);
 
-  // useEffect(() => {
-  //   console.log(`isLoading: ${isLoading}`);
-  //   console.log(`accessToken: ${JSON.stringify(auth?.accessToken)}`);
-  // });
-
-  return <>{isLoading ? <LoadingSign>Loading</LoadingSign> : <Outlet />}</>;
+  return (
+    <>
+      {isLoading ? (
+        <LoadingSign>
+          <HourglassEmptyIcon style={iconStyle} />
+        </LoadingSign>
+      ) : (
+        <Outlet />
+      )}
+    </>
+  );
 };
 
 export default PersistLogin;
