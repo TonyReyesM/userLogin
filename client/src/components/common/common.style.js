@@ -118,7 +118,7 @@ export const Header = styled.div`
   position: fixed;
   top: 1vw;
   width: 98vw;
-  height: 5rem;
+  max-height: 5rem;
   background-color: ${palette.background.light};
   color: ${palette.typography.textLight};
   border-style: solid;
@@ -127,7 +127,6 @@ export const Header = styled.div`
   border-color: ghostwhite;
   padding: 1rem;
   margin-top: 0.5rem;
-  z-index: 20;
 `;
 
 export const Bar = styled.div`

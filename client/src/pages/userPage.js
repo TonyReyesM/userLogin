@@ -1,14 +1,8 @@
 //  components
 import UpdateUserForm from "../components/updateUserForm";
-import UpdatePasswordForm from "../components/updatePasswordForm";
 
 const UserPage = () => {
-  return (
-    <>
-      <UpdateUserForm />
-      <UpdatePasswordForm />
-    </>
-  );
+  return <UpdateUserForm />;
 };
 
 export default UserPage;
