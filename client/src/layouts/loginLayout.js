@@ -14,9 +14,10 @@ import { PageStyle } from "../components/common/common.style";
 
 const Wrapper = styled.div`
   display: flex;
+  position: relative;
+  top: 10rem;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 5rem;
 `;
 
 const UserLoginLayout = () => {
