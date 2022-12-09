@@ -127,6 +127,7 @@ export const Header = styled.div`
   border-color: ghostwhite;
   padding: 1rem;
   margin-top: 0.5rem;
+  z-index: 20;
 `;
 
 export const Bar = styled.div`

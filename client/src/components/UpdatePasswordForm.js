@@ -1,9 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 
 //  hooks
-import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../hooks/useAuth";
+import { useUpdatePassword } from "../hooks/useUpdatePassword";
 
 //  validations
 import { updatePasswordSchema } from "../validations/updatePasswordValidation";
@@ -21,6 +21,7 @@ import {
 
 const UpdatePasswordForm = () => {
   const { auth } = useAuth();
+  const updatePassword = useUpdatePassword();
 
   // react hook form
   const {
@@ -32,7 +33,7 @@ const UpdatePasswordForm = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    updatePassword(data);
   };
 
   return (
@@ -40,19 +41,23 @@ const UpdatePasswordForm = () => {
       <Title>Change password</Title>
       <Question>
         <Label htmlFor="password">Password</Label>
-        <Input id="password" {...register("password")} />
+        <Input id="password" type="password" {...register("password")} />
         {errors.password && <FieldAlert>{errors.password?.message}</FieldAlert>}
       </Question>
       <Question>
         <Label htmlFor="newPassword">New password</Label>
-        <Input id="newPassword" {...register("newPassword")} />
+        <Input id="newPassword" type="password" {...register("newPassword")} />
         {errors.newPassword && (
           <FieldAlert>{errors.newPassword?.message}</FieldAlert>
         )}
       </Question>
       <Question>
         <Label htmlFor="confirmNewPassword">Confirm new password</Label>
-        <Input id="confirmNewPassword" {...register("confirmNewPassword")} />
+        <Input
+          id="confirmNewPassword"
+          type="password"
+          {...register("confirmNewPassword")}
+        />
         {errors.confirmNewPassword && (
           <FieldAlert>{errors.confirmNewPassword?.message}</FieldAlert>
         )}
