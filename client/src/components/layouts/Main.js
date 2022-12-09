@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 //  hooks
-import useAuth from "../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 import { useEffect } from "react";
 
 //  components
 import { Outlet } from "react-router-dom";
-import NavBar from "../components/navBar";
-import SideBar from "../components/sideBar";
+import NavBar from "../NavBar";
+import SideBar from "../SideBar";
 
 //  styles
-import { PageStyle } from "../components/common/common.style";
+import { PageStyle } from "../common/common.style";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
 `;
 
-const UserLoginLayout = () => {
+const Main = () => {
   const { auth, setAuth } = useAuth();
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const UserLoginLayout = () => {
   );
 };
 
-export default UserLoginLayout;
+export default Main;

@@ -4,8 +4,8 @@ import styled from "styled-components";
 //  hooks
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import useUpdateUser from "../hooks/useUpdateUser";
-import useAuth from "../hooks/useAuth";
+import { useUpdateUser } from "../hooks/useUpdateUser";
+import { useAuth } from "../hooks/useAuth";
 
 //  validations
 import { updateUserSchema } from "../validations/updateUserValidation";

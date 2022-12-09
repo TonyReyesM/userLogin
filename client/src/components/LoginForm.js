@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 //  hooks
 import { useForm } from "react-hook-form";
 // import { useLocation } from "react-router-dom";
-import useLogin from "../hooks/useLogin";
+import { useLogin } from "../hooks/useLogin";
 
 //  styles
 import {

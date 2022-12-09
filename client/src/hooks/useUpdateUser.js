@@ -1,10 +1,8 @@
-import { Buffer } from "buffer";
+import { useAxiosPrivate } from "./useAxiosPrivate";
+import { useGetUser } from "./useGetUser";
+import { useAuth } from "./useAuth";
 
-import useAxiosPrivate from "./useAxiosPrivate";
-import useGetUser from "./useGetUser";
-import useAuth from "./useAuth";
-
-const useUpdateUser = () => {
+export const useUpdateUser = () => {
   const axiosPrivate = useAxiosPrivate();
   const { auth, setAuth } = useAuth();
   const getUser = useGetUser();
@@ -49,5 +47,3 @@ const useUpdateUser = () => {
 
   return updateUser;
 };
-
-export default useUpdateUser;

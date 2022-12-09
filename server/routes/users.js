@@ -3,14 +3,14 @@ const router = express.Router();
 
 //  Controllers
 const {
-  loginUser,
   registerUser,
+  loginUser,
+  logoutUser,
   getUser,
   updateUser,
+  deleteUser,
   updateUserPassword,
   refreshAccessToken,
-  logoutUser,
-  deleteUser,
 } = require("../controllers/users");
 
 //  Middleware

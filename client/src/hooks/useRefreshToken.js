@@ -1,8 +1,8 @@
 import axios from "../api/axios";
-import useAuth from "./useAuth";
+import { useAuth } from "./useAuth";
 // import useGetUser from "./useGetUser";
 
-const useRefreshToken = () => {
+export const useRefreshToken = () => {
   const { auth, setAuth } = useAuth();
 
   const user = auth.user ? auth.user : JSON.parse(localStorage.getItem("user"));
@@ -22,5 +22,3 @@ const useRefreshToken = () => {
 
   return refresh;
 };
-
-export default useRefreshToken;

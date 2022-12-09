@@ -1,9 +1,9 @@
 //  hooks
 import { useNavigate } from "react-router-dom";
-import useAuth from "./useAuth";
+import { useAuth } from "./useAuth";
 import axios from "../api/axios";
 
-const useLogout = () => {
+export const useLogout = () => {
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
 
@@ -25,5 +25,3 @@ const useLogout = () => {
 
   return logout;
 };
-
-export default useLogout;

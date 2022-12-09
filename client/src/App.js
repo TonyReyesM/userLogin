@@ -2,21 +2,21 @@ import { Routes, Route } from "react-router-dom";
 
 //  hooks
 import { useEffect } from "react";
-import useTheme from "./hooks/useTheme";
+import { useTheme } from "./hooks/useTheme";
 
 //  styles
 import { WebsiteStyle } from "./components/common/common.style";
 
 //  layouts
-import UserLoginLayout from "./layouts/loginLayout";
+import Main from "./components/layouts/Main";
 
 //  components
-import PersistLogin from "./components/persistLogin";
+import PersistLogin from "./components/PersistLogin";
 
 //  pages
-import LoginPage from "./pages/loginPage";
-import RegisterPage from "./pages/registerPage";
-import UserPage from "./pages/userPage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import UserDashboard from "./pages/UserDasboard";
 
 function App() {
   const { theme } = useTheme();
@@ -30,12 +30,12 @@ function App() {
   return (
     <WebsiteStyle>
       <Routes>
-        <Route path="/" element={<UserLoginLayout />}>
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<Main />}>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
 
           <Route element={<PersistLogin />}>
-            <Route path="/user/:id" element={<UserPage />} />
+            <Route path="/user/:id" element={<UserDashboard />} />
           </Route>
         </Route>
       </Routes>

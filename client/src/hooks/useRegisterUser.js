@@ -4,7 +4,7 @@ import axios from "../api/axios";
 //  hooks
 import { useNavigate } from "react-router-dom";
 
-const useRegisterUser = () => {
+export const useRegisterUser = () => {
   const navigate = useNavigate();
 
   const registerUser = async (userData) => {
@@ -18,5 +18,3 @@ const useRegisterUser = () => {
 
   return registerUser;
 };
-
-export default useRegisterUser;

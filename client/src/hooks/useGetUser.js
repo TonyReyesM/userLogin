@@ -1,9 +1,9 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
 //  hooks
-import useAxiosPrivate from "./useAxiosPrivate";
+import { useAxiosPrivate } from "./useAxiosPrivate";
 
-const useGetUser = () => {
+export const useGetUser = () => {
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,5 +25,3 @@ const useGetUser = () => {
 
   return getUser;
 };
-
-export default useGetUser;

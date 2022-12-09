@@ -11,6 +11,8 @@ const cors = require("cors");
 const methodOverride = require("method-override");
 const helmet = require("helmet");
 
+const BASE_PATH = "/api";
+
 /*
  **HelmetJS
  **Protección de Headers
@@ -62,10 +64,8 @@ app.use(cors());
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 
-const basePath = "/api";
-
-app.use(basePath, indexRouter);
-app.use(`${basePath}/users`, usersRouter);
+app.use(BASE_PATH, indexRouter);
+app.use(`${BASE_PATH}/users`, usersRouter);
 
 //  Database connection
 const MONGO_USER = process.env.MONGO_USER;

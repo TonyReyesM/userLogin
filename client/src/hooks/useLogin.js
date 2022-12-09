@@ -1,10 +1,10 @@
 import axios from "../api/axios";
 
 //  hooks
-import useAuth from "./useAuth";
+import { useAuth } from "./useAuth";
 import { useNavigate } from "react-router-dom";
 
-const useLogin = () => {
+export const useLogin = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
 
@@ -32,5 +32,3 @@ const useLogin = () => {
 
   return login;
 };
-
-export default useLogin;

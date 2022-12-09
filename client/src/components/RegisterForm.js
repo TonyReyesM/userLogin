@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 //  hooks
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import useRegisterUser from "../hooks/useRegisterUser";
+import { useRegisterUser } from "../hooks/useRegisterUser";
 
 //  validations
 import { userRegisterSchema } from "../validations/userRegisterValidation";

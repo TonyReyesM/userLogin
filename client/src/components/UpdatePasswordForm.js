@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 //  hooks
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import useAuth from "../hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
 
 //  validations
 import { updatePasswordSchema } from "../validations/updatePasswordValidation";

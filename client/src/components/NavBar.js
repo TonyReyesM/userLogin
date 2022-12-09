@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 //  hooks
 import { useNavigate } from "react-router-dom";
-import useLogout from "../hooks/useLogout";
-import useAuth from "../hooks/useAuth";
-import useTheme from "../hooks/useTheme";
+import { useLogout } from "../hooks/useLogout";
+import { useAuth } from "../hooks/useAuth";
+import { useTheme } from "../hooks/useTheme";
 
 //  assets
 import { AlienProfile } from "../assets";
