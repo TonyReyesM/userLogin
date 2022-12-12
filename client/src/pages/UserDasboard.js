@@ -1,6 +1,6 @@
 //  components
-import UpdateUserForm from "../components/UpdateUserForm";
-import UpdatePasswordForm from "../components/UpdatePasswordForm";
+import UpdateUserForm from "../components/UpdateUserForm/UpdateUserForm";
+import UpdatePasswordForm from "../components/UpdatePasswordForm/UpdatePasswordForm";
 
 const UserDashboard = () => {
   return (

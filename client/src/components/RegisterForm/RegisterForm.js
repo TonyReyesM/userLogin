@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 //  hooks
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useRegisterUser } from "../hooks/useRegisterUser";
+import { useRegisterUser } from "./hooks/useRegisterUser";
 
 //  validations
-import { userRegisterSchema } from "../validations/userRegisterValidation";
+import { userRegisterSchema } from "../../validations/userRegisterValidation";
 
 //  styles
 import {
@@ -19,8 +19,8 @@ import {
   Button,
   RegisterCTA,
   FieldAlert,
-} from "./common/common.style";
-import { palette } from "./common/palette";
+} from "../common/common.style";
+import { palette } from "../common/palette";
 
 const linkStyle = {
   color: palette.background.dark,

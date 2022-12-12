@@ -1,7 +1,7 @@
-import axios from "../api/axios";
+import axios from "../../../api/axios";
 
 //  hooks
-import { useAuth } from "./useAuth";
+import { useAuth } from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 export const useLogin = () => {

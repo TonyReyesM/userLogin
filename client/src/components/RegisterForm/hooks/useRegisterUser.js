@@ -1,5 +1,5 @@
 // api
-import axios from "../api/axios";
+import axios from "../../../api/axios";
 
 //  hooks
 import { useNavigate } from "react-router-dom";

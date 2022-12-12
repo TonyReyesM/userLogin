@@ -1,6 +1,6 @@
-import { useAxiosPrivate } from "./useAxiosPrivate";
-import { useGetUser } from "./useGetUser";
-import { useAuth } from "./useAuth";
+import { useAxiosPrivate } from "../../../hooks/useAxiosPrivate";
+import { useGetUser } from "../../../hooks/useGetUser";
+import { useAuth } from "../../../hooks/useAuth";
 
 export const useUpdateUser = () => {
   const axiosPrivate = useAxiosPrivate();

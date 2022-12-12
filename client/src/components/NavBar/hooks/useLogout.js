@@ -1,7 +1,7 @@
 //  hooks
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./useAuth";
-import axios from "../api/axios";
+import { useAuth } from "../../../hooks/useAuth";
+import axios from "../../../api/axios";
 
 export const useLogout = () => {
   const { auth, setAuth } = useAuth();

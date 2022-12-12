@@ -2,11 +2,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 //  hooks
 import { useForm } from "react-hook-form";
-import { useAuth } from "../hooks/useAuth";
-import { useUpdatePassword } from "../hooks/useUpdatePassword";
+import { useAuth } from "../../hooks/useAuth";
+import { useUpdatePassword } from "./hooks/useUpdatePassword";
 
 //  validations
-import { updatePasswordSchema } from "../validations/updatePasswordValidation";
+import { updatePasswordSchema } from "../../validations/updatePasswordValidation";
 
 //  styles
 import {
@@ -17,7 +17,7 @@ import {
   Label,
   Button,
   FieldAlert,
-} from "./common/common.style";
+} from "../common/common.style";
 
 const UpdatePasswordForm = () => {
   const { auth } = useAuth();

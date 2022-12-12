@@ -11,7 +11,7 @@ import { WebsiteStyle } from "./components/common/common.style";
 import Main from "./components/layouts/Main";
 
 //  components
-import PersistLogin from "./components/PersistLogin";
+import PersistLogin from "./components/PersistLogin/PersistLogin";
 
 //  pages
 import Login from "./pages/Login";

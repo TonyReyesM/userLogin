@@ -1,5 +1,5 @@
 //  styles
-import { Bar } from "./common/common.style";
+import { Bar } from "../common/common.style";
 
 const SideBar = () => {
   return <Bar></Bar>;

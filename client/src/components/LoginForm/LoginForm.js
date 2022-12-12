@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 //  hooks
 import { useForm } from "react-hook-form";
 // import { useLocation } from "react-router-dom";
-import { useLogin } from "../hooks/useLogin";
+import { useLogin } from "./hooks/useLogin";
 
 //  styles
 import {
@@ -16,11 +16,11 @@ import {
   Button,
   RegisterCTA,
   FieldAlert,
-} from "./common/common.style";
-import { palette } from "./common/palette";
+} from "../common/common.style";
+import { palette } from "../common/palette";
 
 //  validations
-import { userLoginSchema } from "../validations/userLoginValidation";
+import { userLoginSchema } from "../../validations/userLoginValidation";
 
 const linkStyle = {
   color: palette.background.dark,

@@ -3,14 +3,14 @@ import { Outlet } from "react-router-dom";
 
 //  hooks
 import { useState, useEffect } from "react";
-import { useRefreshToken } from "../hooks/useRefreshToken";
-import { useAuth } from "../hooks/useAuth";
+import { useRefreshToken } from "../../hooks/useRefreshToken";
+import { useAuth } from "../../hooks/useAuth";
 
 //  assets
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 
 //  styles
-import { LoadingSign } from "./common/common.style";
+import { LoadingSign } from "../common/common.style";
 
 const iconStyle = {
   height: "8rem",

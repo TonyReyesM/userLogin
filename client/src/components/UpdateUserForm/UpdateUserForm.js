@@ -4,17 +4,17 @@ import styled from "styled-components";
 //  hooks
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useUpdateUser } from "../hooks/useUpdateUser";
-import { useAuth } from "../hooks/useAuth";
+import { useUpdateUser } from "./hooks/useUpdateUser";
+import { useAuth } from "../../hooks/useAuth";
 
 //  validations
-import { updateUserSchema } from "../validations/updateUserValidation";
+import { updateUserSchema } from "../../validations/updateUserValidation";
 
 //  components
 // import ProfilePicture from "./profilePicture";
 
 //  assets
-import { AlienProfile } from "../assets";
+import { AlienProfile } from "../../assets";
 
 //  styles
 import {
@@ -28,7 +28,7 @@ import {
   AvatarImg,
   AvatarWrapper,
   ImgInput,
-} from "./common/common.style";
+} from "../common/common.style";
 
 const ImgLabel = styled.label`
   position: absolute;
