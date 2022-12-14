@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (auth.accessToken) navigate(`/user/${auth.user._id}`);
+    if (auth.accessToken) navigate(`/dashboard/${auth.user._id}`);
   }, [auth]);
 
   return <LoginForm />;

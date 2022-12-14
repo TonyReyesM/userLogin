@@ -3,7 +3,11 @@ const asyncHandler = require("express-async-handler");
 
 const updatePost = asyncHandler(async (req, res) => {
   const _id = req.params.id;
-  const { title, body } = req.body;
+  const { title, content } = req.body;
+
+  console.log(_id);
+  console.log(title);
+  console.log(content);
 
   const post = await Post.findOneAndUpdate(
     {
@@ -12,7 +16,7 @@ const updatePost = asyncHandler(async (req, res) => {
     {
       $set: {
         title,
-        body,
+        content,
       },
     },
     { returnOriginal: false }

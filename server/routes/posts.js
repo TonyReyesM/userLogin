@@ -13,12 +13,12 @@ const {
 const { protect } = require("../middleware/authMiddleware");
 
 //  Routes
-router.get("/get", getPosts);
+router.get("/get", protect, getPosts);
 
-router.post("/create", createPost);
+router.post("/create", protect, createPost);
 
-router.put("/update", updatePost);
+router.put("/update/:id", protect, updatePost);
 
-router.delete("/delete", deletePost);
+router.delete("/delete/:id", protect, deletePost);
 
 module.exports = router;

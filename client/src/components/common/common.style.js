@@ -4,9 +4,9 @@ import { palette } from "../common/palette";
 export const WebsiteStyle = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   height: 95vh;
 `;
@@ -15,7 +15,8 @@ export const PageStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: fit-content;
+  position: relative;
+  top: 5rem;
 `;
 
 export const Title = styled.h1`
@@ -34,8 +35,8 @@ export const Form = styled.form`
   border-radius: 1rem;
   border-color: ghostwhite;
   row-gap: 1.5rem;
-  margin: 3vw;
-  padding: 3vw;
+  margin: 3rem;
+  padding: 3rem;
   background-color: ${palette.background.light};
   color: ${palette.typography.textLight};
 `;
@@ -103,53 +104,12 @@ export const Button = styled.button`
   }
 `;
 
-export const RegisterCTA = styled.p`
+export const CTA = styled.p`
   text-align: right;
 `;
 
 export const Link = styled.a`
   color: #6fdd99;
-`;
-
-export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 1vw;
-  width: 98vw;
-  height: 5rem;
-  background-color: ${palette.background.light};
-  color: ${palette.typography.textLight};
-  border-style: solid;
-  border-width: 0.2rem;
-  border-radius: 1rem;
-  border-color: ghostwhite;
-  padding: 1rem;
-  margin-top: 0.5rem;
-  z-index: 20;
-`;
-
-export const Bar = styled.div`
-  background-color: ${palette.typography.textLight};
-  color: ${palette.typography.textDark};
-  opacity: 0.8;
-  border-style: solid;
-  border-width: 0.2rem;
-  border-radius: 0.2rem;
-  border-color: ghostwhite;
-  margin: 3vw;
-  padding: 3vw;
-  width: 20vw;
-  height: 70vh;
-`;
-
-export const NavBarSection = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 1.5rem;
-  margin: 0 2rem;
 `;
 
 export const LoadingSign = styled.div`

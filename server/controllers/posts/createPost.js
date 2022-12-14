@@ -2,15 +2,15 @@ const Post = require("../../models/post");
 const asyncHandler = require("express-async-handler");
 
 const createPost = asyncHandler(async (req, res) => {
-  const { title, body, user } = req.body;
-  if (!title || !body || !user) {
+  const { title, content, user } = req.body;
+  if (!title || !content || !user) {
     res.status(400);
     throw new Error("Post data incomplete");
   }
 
   const post = await Post.create({
     title,
-    body,
+    content,
     user: user._id,
   });
 

@@ -14,7 +14,7 @@ import {
   Label,
   Input,
   Button,
-  RegisterCTA,
+  CTA,
   FieldAlert,
 } from "../common/common.style";
 import { palette } from "../common/palette";
@@ -62,13 +62,13 @@ const LoginForm = () => {
       </Question>
       {errors.password && <FieldAlert>{errors.password?.message}</FieldAlert>}
       <Button type="submit">Sign in</Button>
-      <RegisterCTA>
+      <CTA>
         Not a user yet?{" "}
         <Link to="/register" style={linkStyle}>
           Register
         </Link>{" "}
         now!
-      </RegisterCTA>
+      </CTA>
     </Form>
   );
 };

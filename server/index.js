@@ -63,9 +63,11 @@ app.use(cors());
 //  Routes
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const postsRouter = require("./routes/posts");
 
 app.use(BASE_PATH, indexRouter);
 app.use(`${BASE_PATH}/users`, usersRouter);
+app.use(`${BASE_PATH}/posts`, postsRouter);
 
 //  Database connection
 const MONGO_USER = process.env.MONGO_USER;

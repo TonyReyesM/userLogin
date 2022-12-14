@@ -9,6 +9,7 @@ import { WebsiteStyle } from "./components/common/common.style";
 
 //  layouts
 import Main from "./components/layouts/Main";
+import Dashboard from "./components/layouts/Dashboard";
 
 //  components
 import PersistLogin from "./components/PersistLogin/PersistLogin";
@@ -16,7 +17,9 @@ import PersistLogin from "./components/PersistLogin/PersistLogin";
 //  pages
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import UserDashboard from "./pages/UserDasboard";
+import Home from "./pages/dashboard/Home";
+import Account from "./pages/dashboard/Account";
+import Settings from "./pages/dashboard/Settings";
 
 function App() {
   const { theme } = useTheme();
@@ -33,9 +36,12 @@ function App() {
         <Route path="/" element={<Main />}>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-
+        </Route>
+        <Route path="/dashboard" element={<Dashboard />}>
           <Route element={<PersistLogin />}>
-            <Route path="/user/:id" element={<UserDashboard />} />
+            <Route path="/dashboard/:id" element={<Home />} />
+            <Route path="/dashboard/:id/account" element={<Account />} />
+            <Route path="/dashboard/:id/settings" element={<Settings />} />
           </Route>
         </Route>
       </Routes>

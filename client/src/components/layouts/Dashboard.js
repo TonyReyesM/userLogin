@@ -5,13 +5,13 @@ import { useEffect } from "react";
 //  components
 import { Outlet } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
+import SideBar from "../SideBar/SideBar";
 
 //  styles
 import { PageStyle } from "../common/common.style";
 
-const Main = () => {
+const Dashboard = () => {
   const { auth, setAuth } = useAuth();
-
   console.log({ ...auth });
 
   useEffect(() => {
@@ -26,6 +26,7 @@ const Main = () => {
   return (
     <>
       <NavBar />
+      <SideBar />
       <PageStyle>
         <Outlet />
       </PageStyle>
@@ -33,4 +34,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Dashboard;

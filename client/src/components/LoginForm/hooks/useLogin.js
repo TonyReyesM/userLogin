@@ -23,7 +23,7 @@ export const useLogin = () => {
 
       axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
-      navigate(`/user/${user._id}`);
+      navigate(`/dashboard/${user._id}`);
       // navigate(from || `/user/${user.username}`, { replace: true });
     } catch (error) {
       console.log(error);

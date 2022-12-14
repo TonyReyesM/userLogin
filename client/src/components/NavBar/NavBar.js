@@ -16,15 +16,48 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 
 //  styles
 import {
-  Header,
   Button,
   Title,
-  NavBarSection,
   AvatarImg,
   AvatarWrapper,
   ThemeButton,
 } from "../common/common.style";
 import { palette } from "../common/palette";
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 5rem;
+  background-color: ${palette.background.light};
+  color: ${palette.typography.textLight};
+  border-bottom: 1px solid whitesmoke;
+  padding: 1rem;
+  z-index: 20;
+`;
+
+const Logo = styled(Title)`
+  padding: 0.8rem;
+  border: 2px solid ghostwhite 1rem;
+  border-radius: 1rem;
+
+  &:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+    color: ${palette.typography.textDark};
+  }
+`;
+
+const NavBarSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1.5rem;
+  margin: 0 2rem;
+`;
 
 const LogButton = styled(Button)`
   display: inline-block;
@@ -57,6 +90,8 @@ const NavBar = () => {
   const logout = useLogout();
   const navigate = useNavigate();
 
+  console.log({ ...auth });
+
   const changeTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
@@ -64,7 +99,7 @@ const NavBar = () => {
   return (
     <Header>
       <Link to="/" style={linkStyle}>
-        <Title>LoginDude</Title>
+        <Logo>LoginDude</Logo>
       </Link>
 
       <NavBarSection>
@@ -77,7 +112,7 @@ const NavBar = () => {
           </>
         ) : (
           <>
-            <Link to={`/user/${auth.user._id}`}>
+            <Link to={`/dashboard/${auth.user._id}`}>
               <AvatarWrapper style={avatarWrapperStyle}>
                 <AvatarImg
                   src={auth.user.photo || AlienProfile}
@@ -85,7 +120,7 @@ const NavBar = () => {
                 />
               </AvatarWrapper>
             </Link>
-            <Link to={`/user/${auth.user._id}`} style={linkStyle}>
+            <Link to={`/dashboard/${auth.user._id}`} style={linkStyle}>
               <Title style={{ fontSize: "1.5rem" }}>{auth.user.username}</Title>
             </Link>
             <LogButton onClick={logout}>Log out</LogButton>
