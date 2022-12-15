@@ -52,8 +52,6 @@ const linkStyle = {
 const SideBar = () => {
   const { auth } = useAuth();
 
-  console.log({ ...auth });
-
   return (
     <Bar>
       <Link to={`/dashboard/${auth.user._id}`} style={linkStyle}>

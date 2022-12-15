@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 //  hooks
 import { useEffect } from "react";
 import { useTheme } from "./hooks/useTheme";
+import { useAuth } from "./hooks/useAuth";
 
 //  styles
 import { WebsiteStyle } from "./components/common/common.style";
@@ -23,6 +24,18 @@ import Settings from "./pages/dashboard/Settings";
 
 function App() {
   const { theme } = useTheme();
+  const { auth, setAuth } = useAuth();
+
+  useEffect(() => {
+    console.log("Running local storage auth effect in app");
+    if (!auth.user && localStorage.getItem("accessToken")) {
+      console.log("Restoring auth state in app");
+      const user = JSON.parse(localStorage.getItem("user"));
+      const accessToken = localStorage.getItem("accessToken");
+      const refreshToken = localStorage.getItem("refreshToken");
+      setAuth({ user, accessToken, refreshToken });
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("theme", theme);

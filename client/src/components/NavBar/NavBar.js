@@ -90,8 +90,6 @@ const NavBar = () => {
   const logout = useLogout();
   const navigate = useNavigate();
 
-  console.log({ ...auth });
-
   const changeTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
