@@ -51,27 +51,32 @@ const linkStyle = {
 
 const SideBar = () => {
   const { auth } = useAuth();
+  console.log(auth);
 
   return (
     <Bar>
-      <Link to={`/dashboard/${auth.user._id}`} style={linkStyle}>
-        <DashboardSection>
-          <HomeIcon />
-          Home
-        </DashboardSection>
-      </Link>
-      <Link to={`/dashboard/${auth.user._id}/account`} style={linkStyle}>
-        <DashboardSection>
-          <PersonIcon />
-          Account
-        </DashboardSection>
-      </Link>
-      <Link to={`/dashboard/${auth.user._id}/settings`} style={linkStyle}>
-        <DashboardSection>
-          <SettingsIcon />
-          Settings
-        </DashboardSection>
-      </Link>
+      {auth.user && (
+        <>
+          <Link to={`/dashboard/${auth.user._id}`} style={linkStyle}>
+            <DashboardSection>
+              <HomeIcon />
+              Home
+            </DashboardSection>
+          </Link>
+          <Link to={`/dashboard/${auth.user._id}/account`} style={linkStyle}>
+            <DashboardSection>
+              <PersonIcon />
+              Account
+            </DashboardSection>
+          </Link>
+          <Link to={`/dashboard/${auth.user._id}/settings`} style={linkStyle}>
+            <DashboardSection>
+              <SettingsIcon />
+              Settings
+            </DashboardSection>
+          </Link>
+        </>
+      )}
     </Bar>
   );
 };
