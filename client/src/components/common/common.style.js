@@ -80,6 +80,33 @@ export const Input = styled.input`
   }
 `;
 
+export const TextAreaInput = styled.textarea`
+  font-size: 1rem;
+  color: ${palette.typography.textDark};
+  background-color: #dddddd;
+  width: 100%;
+  height: 10rem;
+  padding: 0.3rem 0.5rem;
+  border: 2px solid transparent;
+  border-radius: 0.6rem;
+
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #eeeeee;
+  }
+
+  &:focus {
+    cursor: text;
+  }
+`;
+
 export const ImgInput = styled.input`
   display: none;
 `;
