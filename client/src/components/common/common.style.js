@@ -31,8 +31,8 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   border-style: solid;
-  border-width: 0.2rem;
-  border-radius: 1rem;
+  border-width: 1px;
+  border-radius: 0.5rem;
   border-color: ghostwhite;
   row-gap: 1.5rem;
   margin: 3rem;
