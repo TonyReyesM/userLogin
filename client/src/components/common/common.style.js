@@ -37,13 +37,14 @@ export const Form = styled.form`
   row-gap: 1.5rem;
   margin: 3rem;
   padding: 3rem;
+  max-width: 35vw;
   background-color: ${palette.background.light};
   color: ${palette.typography.textLight};
 `;
 
 export const Question = styled.div`
   display: flex;
-  width: 24rem;
+  width: 100%;
   column-gap: 1rem;
   justify-content: space-between;
   align-items: center;
@@ -58,10 +59,12 @@ export const Input = styled.input`
   font-size: 1rem;
   color: ${palette.typography.textDark};
   background-color: #dddddd;
-  width: 12rem;
+  width: 100%;
   padding: 0.3rem 0.5rem;
   border: 2px solid transparent;
   border-radius: 0.6rem;
+  max-width: 14rem;
+  box-sizing: border-box;
 
   -moz-appearance: textfield;
   &::-webkit-outer-spin-button,
@@ -85,10 +88,13 @@ export const TextAreaInput = styled.textarea`
   color: ${palette.typography.textDark};
   background-color: #dddddd;
   width: 100%;
-  height: 10rem;
+  height: 10vw;
+  max-height: 15rem;
+  resize: none;
   padding: 0.3rem 0.5rem;
   border: 2px solid transparent;
   border-radius: 0.6rem;
+  box-sizing: border-box;
 
   -moz-appearance: textfield;
   &::-webkit-outer-spin-button,

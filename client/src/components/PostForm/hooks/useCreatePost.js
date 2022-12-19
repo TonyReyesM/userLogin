@@ -7,13 +7,12 @@ export const useCreatePost = () => {
   const { auth } = useAuth();
 
   const createPost = async (data) => {
-    console.log({ ...data, user: auth.user._id });
     try {
       const response = await axiosPrivate.post("/api/posts/create", {
         ...data,
         user: auth.user._id,
       });
-      console.log(response);
+      return response.data.post;
     } catch (error) {
       console.log(error);
     }

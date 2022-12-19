@@ -13,7 +13,7 @@ const {
 const { protect } = require("../middleware/authMiddleware");
 
 //  Routes
-router.get("/get", protect, getPosts);
+router.get("/get/:id", protect, getPosts);
 
 router.post("/create", protect, createPost);
 
