@@ -2,9 +2,10 @@ const Post = require("../../models/post");
 const asyncHandler = require("express-async-handler");
 
 const getPosts = asyncHandler(async (req, res) => {
-  const { _id } = req.body.user; //req.params.id ??
+  const id = req.params.id; //req.params.id ??
+  console.log(id);
 
-  const posts = await Post.find({ user: _id });
+  const posts = await Post.find({ user: id });
 
   console.log(posts);
 

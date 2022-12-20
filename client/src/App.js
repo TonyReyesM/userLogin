@@ -19,6 +19,7 @@ import PersistLogin from "./components/PersistLogin/PersistLogin";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/dashboard/Home";
+import Projects from "./pages/dashboard/Projects";
 import Account from "./pages/dashboard/Account";
 import Settings from "./pages/dashboard/Settings";
 
@@ -27,9 +28,7 @@ function App() {
   const { auth, setAuth } = useAuth();
 
   useEffect(() => {
-    console.log("Running local storage auth effect in app");
     if (!auth.user && localStorage.getItem("accessToken")) {
-      console.log("Restoring auth state in app");
       const user = JSON.parse(localStorage.getItem("user"));
       const accessToken = localStorage.getItem("accessToken");
       const refreshToken = localStorage.getItem("refreshToken");
@@ -53,6 +52,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}>
           <Route element={<PersistLogin />}>
             <Route path="/dashboard/:id" element={<Home />} />
+            <Route path="/dashboard/:id/projects" element={<Projects />} />
             <Route path="/dashboard/:id/account" element={<Account />} />
             <Route path="/dashboard/:id/settings" element={<Settings />} />
           </Route>
