@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
+//  hooks
+import { useDeletePost } from "./hooks/useDeletePost";
+
+//  assets
+import DeleteIcon from "@mui/icons-material/Delete";
+
 //  styles
-import { Title } from "../common/common.style";
+import { Title, Button } from "../common/common.style";
 import { palette } from "../common/palette";
 
 const PostHolder = styled.div`
@@ -25,7 +31,26 @@ const PostTitle = styled(Title)`
 
 const PostContent = styled.p``;
 
-const PostDisplay = ({ posts }) => {
+const DeleteButton = styled(Button)`
+  background-color: ${palette.background.dark};
+  color: white;
+  padding: 3% 3%;
+
+  &:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+    color: ${palette.typography.textDark};
+  }
+`;
+
+const PostDisplay = ({ posts, setPosts }) => {
+  const deletePost = useDeletePost();
+
+  const handleClick = (e) => {
+    const id = e.target.id;
+    deletePost(id);
+    setPosts(posts.filter((post) => post._id !== id));
+  };
+
   return (
     <>
       {posts &&
@@ -34,6 +59,9 @@ const PostDisplay = ({ posts }) => {
             <PostHolder key={post._id}>
               <PostTitle>{post.title}</PostTitle>
               <PostContent>{post.content}</PostContent>
+              <DeleteButton id={post._id} onClick={(e) => handleClick(e)}>
+                <DeleteIcon style={{ pointerEvents: "none" }} />
+              </DeleteButton>
             </PostHolder>
           );
         })}

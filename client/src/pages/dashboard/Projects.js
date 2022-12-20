@@ -1,5 +1,4 @@
 //  hooks
-import { useState, useEffect } from "react";
 import { useGetUserPosts } from "../../components/PostDisplay/hooks/useGetUserPosts";
 
 //  components
@@ -12,7 +11,7 @@ const Projects = () => {
   return (
     <>
       <PostCreator setPosts={setPosts} />
-      <PostDisplay posts={posts} />
+      <PostDisplay posts={posts} setPosts={setPosts} />
     </>
   );
 };
