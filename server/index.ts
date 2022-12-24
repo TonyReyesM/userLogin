@@ -8,7 +8,7 @@ import fileupload from "express-fileupload";
 import cors from "cors";
 import methodOverride from "method-override";
 import helmet from "helmet";
-//  Routes
+// Routes
 import indexRouter from "./routes/index";
 import usersRouter from "./routes/users";
 import postsRouter from "./routes/posts";
