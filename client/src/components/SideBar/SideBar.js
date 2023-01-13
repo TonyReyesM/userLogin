@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 
 //  assets
 import HomeIcon from "@mui/icons-material/Home";
+import AlbumIcon from "@mui/icons-material/Album";
+import DiamondIcon from "@mui/icons-material/Diamond";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 
@@ -51,7 +53,6 @@ const linkStyle = {
 
 const SideBar = () => {
   const { auth } = useAuth();
-  console.log(auth);
 
   return (
     <Bar>
@@ -61,6 +62,12 @@ const SideBar = () => {
             <DashboardSection>
               <HomeIcon />
               Home
+            </DashboardSection>
+          </Link>
+          <Link to={`/dashboard/${auth.user._id}/projects`} style={linkStyle}>
+            <DashboardSection>
+              <DiamondIcon />
+              Projects
             </DashboardSection>
           </Link>
           <Link to={`/dashboard/${auth.user._id}/account`} style={linkStyle}>
