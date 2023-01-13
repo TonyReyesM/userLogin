@@ -1,24 +1,20 @@
-const express = require("express");
-const router = express.Router();
-
+import express from "express";
 //  Controllers
-const {
+import {
   getPosts,
   createPost,
   updatePost,
   deletePost,
-} = require("../controllers/posts");
-
+} from "../controllers/posts";
 //  Middleware
-const { protect } = require("../middleware/authMiddleware");
+import { protect } from "../middleware/authMiddleware";
 
 //  Routes
+const router = express.Router();
+
 router.get("/get", protect, getPosts);
-
 router.post("/create", protect, createPost);
-
 router.put("/update/:id", protect, updatePost);
-
 router.delete("/delete/:id", protect, deletePost);
 
-module.exports = router;
+export default router;
