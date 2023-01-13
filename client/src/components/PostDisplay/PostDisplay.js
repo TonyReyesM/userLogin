@@ -5,6 +5,7 @@ import { useDeletePost } from "./hooks/useDeletePost";
 
 //  assets
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 //  styles
 import { Title, Button } from "../common/common.style";
@@ -31,10 +32,11 @@ const PostTitle = styled(Title)`
 
 const PostContent = styled.p``;
 
-const DeleteButton = styled(Button)`
+const PostButton = styled(Button)`
   background-color: ${palette.background.dark};
   color: white;
-  padding: 3% 3%;
+  padding: 0.6rem;
+  border-radius: 5px;
 
   &:hover {
     background-color: rgba(200, 200, 200, 0.8);
@@ -42,13 +44,26 @@ const DeleteButton = styled(Button)`
   }
 `;
 
+const ButtonSection = styled.div`
+  display: flex;
+  column-gap: 1rem;
+  width: 100%;
+  justify-content: flex-end;
+`;
+
 const PostDisplay = ({ posts, setPosts }) => {
   const deletePost = useDeletePost();
 
-  const handleClick = (e) => {
-    const id = e.target.id;
+  const handleDelete = (e) => {
+    const id = e.target.id.split("-")[1];
     deletePost(id);
     setPosts(posts.filter((post) => post._id !== id));
+  };
+
+  const handleEdit = (e) => {
+    const id = e.target.id.split("-")[1];
+    console.log(id);
+    // editPost(id);
   };
 
   return (
@@ -59,9 +74,20 @@ const PostDisplay = ({ posts, setPosts }) => {
             <PostHolder key={post._id}>
               <PostTitle>{post.title}</PostTitle>
               <PostContent>{post.content}</PostContent>
-              <DeleteButton id={post._id} onClick={(e) => handleClick(e)}>
-                <DeleteIcon style={{ pointerEvents: "none" }} />
-              </DeleteButton>
+              <ButtonSection>
+                <PostButton
+                  id={`edit-${post._id}`}
+                  onClick={(e) => handleEdit(e)}
+                >
+                  <EditIcon style={{ pointerEvents: "none" }} />
+                </PostButton>
+                <PostButton
+                  id={`delete-${post._id}`}
+                  onClick={(e) => handleDelete(e)}
+                >
+                  <DeleteIcon style={{ pointerEvents: "none" }} />
+                </PostButton>
+              </ButtonSection>
             </PostHolder>
           );
         })}
