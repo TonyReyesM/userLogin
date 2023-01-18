@@ -45,6 +45,11 @@ const DashboardSection = styled.div`
   }
 `;
 
+const DashboardSubsection = styled(DashboardSection)`
+  margin-left: 2.5rem;
+  font-size: 1.2rem;
+`;
+
 const linkStyle = {
   color: palette.typography.textLight,
   fontWeight: "bold",
@@ -69,6 +74,9 @@ const SideBar = () => {
               <DiamondIcon />
               Projects
             </DashboardSection>
+          </Link>
+          <Link to={`/dashboard/${auth.user._id}/my-posts`} style={linkStyle}>
+            <DashboardSubsection>My Posts</DashboardSubsection>
           </Link>
           <Link to={`/dashboard/${auth.user._id}/account`} style={linkStyle}>
             <DashboardSection>

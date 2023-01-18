@@ -11,7 +11,7 @@ export const useGetUserPosts = () => {
   const getUserPosts = async () => {
     try {
       const response = await axiosPrivate.get(
-        `/api/posts/get/${auth.user._id}`
+        `/api/posts/getUserPosts/${auth.user._id}`
       );
       const posts = response.data.posts;
       setPosts(posts);

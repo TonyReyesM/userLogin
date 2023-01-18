@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 //  hooks
-import { useDeletePost } from "./hooks/useDeletePost";
+import { useNavigate } from "react-router-dom";
+
+//  components
+import { Link } from "react-router-dom";
 
 //  assets
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
@@ -30,13 +34,22 @@ const PostTitle = styled(Title)`
   text-align: left;
 `;
 
-const PostContent = styled.p``;
+const PostContent = styled.p`
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+`;
 
-const PostButton = styled(Button)`
+const ViewButton = styled(Button)`
   background-color: ${palette.background.dark};
   color: white;
   padding: 0.6rem;
   border-radius: 5px;
+  align-items: center;
+  column-gap: 5px;
 
   &:hover {
     background-color: rgba(200, 200, 200, 0.8);
@@ -44,27 +57,41 @@ const PostButton = styled(Button)`
   }
 `;
 
-const ButtonSection = styled.div`
-  display: flex;
-  column-gap: 1rem;
-  width: 100%;
-  justify-content: flex-end;
-`;
+// const ButtonSection = styled.div`
+//   display: flex;
+//   column-gap: 1rem;
+//   width: 100%;
+//   justify-content: flex-end;
+// `;
 
 const PostDisplay = ({ posts, setPosts }) => {
-  const deletePost = useDeletePost();
+  const navigate = useNavigate();
+  // const [isEditing, setIsEditing] = useState(false);
 
-  const handleDelete = (e) => {
-    const id = e.target.id.split("-")[1];
-    deletePost(id);
-    setPosts(posts.filter((post) => post._id !== id));
-  };
+  // const editPost = useEditPost();
+  // const deletePost = useDeletePost();
 
-  const handleEdit = (e) => {
-    const id = e.target.id.split("-")[1];
-    console.log(id);
-    // editPost(id);
-  };
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm({
+  //   resolver: yupResolver(createPostSchema),
+  // });
+
+  // const handleDelete = (e) => {
+  //   const id = e.target.id.split("-")[1];
+  //   deletePost(id);
+  //   setPosts(posts.filter((post) => post._id !== id));
+  // };
+
+  // const onSubmit = async (data) => {
+  //   console.log("Edit post!");
+  //   console.log(data);
+  //   const id = e.target.id.split("-")[1];
+  //   console.log(id);
+  //   editPost(id, postData);
+  // };
 
   return (
     <>
@@ -74,20 +101,17 @@ const PostDisplay = ({ posts, setPosts }) => {
             <PostHolder key={post._id}>
               <PostTitle>{post.title}</PostTitle>
               <PostContent>{post.content}</PostContent>
-              <ButtonSection>
-                <PostButton
-                  id={`edit-${post._id}`}
-                  onClick={(e) => handleEdit(e)}
-                >
-                  <EditIcon style={{ pointerEvents: "none" }} />
-                </PostButton>
-                <PostButton
-                  id={`delete-${post._id}`}
-                  onClick={(e) => handleDelete(e)}
-                >
-                  <DeleteIcon style={{ pointerEvents: "none" }} />
-                </PostButton>
-              </ButtonSection>
+              <ViewButton onClick={() => navigate(`/post/${post._id}`)}>
+                <VisibilityIcon style={{ pointerEvents: "none" }} /> View
+              </ViewButton>
+              {/* <ButtonSection>
+                  <PostButton id={`edit-${post._id}`}>
+                    <EditIcon style={{ pointerEvents: "none" }} />
+                  </PostButton>
+                  <PostButton id={`delete-${post._id}`}>
+                    <DeleteIcon style={{ pointerEvents: "none" }} />
+                  </PostButton>
+                </ButtonSection> */}
             </PostHolder>
           );
         })}

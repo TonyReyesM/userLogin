@@ -19,7 +19,9 @@ import PersistLogin from "./components/PersistLogin/PersistLogin";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/dashboard/Home";
-import Projects from "./pages/dashboard/Projects";
+import Projects from "./pages/dashboard/Projects/Projects";
+import MyPosts from "./pages/dashboard/Projects/MyPosts";
+import Post from "./pages/dashboard/Projects/Post";
 import Account from "./pages/dashboard/Account";
 import Settings from "./pages/dashboard/Settings";
 
@@ -48,11 +50,13 @@ function App() {
         <Route path="/" element={<Main />}>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/post/:id" element={<Post />} />
         </Route>
         <Route path="/dashboard" element={<Dashboard />}>
           <Route element={<PersistLogin />}>
             <Route path="/dashboard/:id" element={<Home />} />
             <Route path="/dashboard/:id/projects" element={<Projects />} />
+            <Route path="/dashboard/:id/my-posts" element={<MyPosts />} />
             <Route path="/dashboard/:id/account" element={<Account />} />
             <Route path="/dashboard/:id/settings" element={<Settings />} />
           </Route>
