@@ -12,6 +12,7 @@ import helmet from "helmet";
 import indexRouter from "./routes/index";
 import usersRouter from "./routes/users";
 import postsRouter from "./routes/posts";
+import commentsRouter from "./routes/comments";
 
 const app = express();
 const BASE_PATH = "/api";
@@ -45,11 +46,14 @@ app.use(cors());
 app.use(BASE_PATH, indexRouter);
 app.use(`${BASE_PATH}/users`, usersRouter);
 app.use(`${BASE_PATH}/posts`, postsRouter);
+app.use(`${BASE_PATH}/comments`, commentsRouter);
 
 //  Database connection
 const MONGO_USER = process.env.MONGO_USER;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
-const URI = `mongodb+srv://${MONGO_USER}:${encodeURIComponent(MONGO_PASSWORD)}@cluster0.upkrn.mongodb.net/?retryWrites=true&w=majority`
+const URI = `mongodb+srv://${MONGO_USER}:${encodeURIComponent(
+  MONGO_PASSWORD
+)}@cluster0.upkrn.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose.connect(URI);
 const db = mongoose.connection;
