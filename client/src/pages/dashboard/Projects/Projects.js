@@ -1,9 +1,5 @@
 //  hooks
-import { useGetUserPosts } from "../../../components/PostDisplay/hooks/useGetUserPosts";
-
-//  components
-import PostCreator from "../../../components/PostForm/PostCreator";
-import PostDisplay from "../../../components/PostDisplay/PostDisplay";
+import { useGetUserPosts } from "../../../components/UserPostsDisplay/hooks/useGetUserPosts";
 
 //  styles
 import { Title } from "../../../components/common/common.style";

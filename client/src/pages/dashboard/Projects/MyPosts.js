@@ -1,9 +1,9 @@
 //  hooks
-import { useGetUserPosts } from "../../../components/PostDisplay/hooks/useGetUserPosts";
+import { useGetUserPosts } from "../../../components/UserPostsDisplay/hooks/useGetUserPosts";
 
 //  components
 import PostCreator from "../../../components/PostForm/PostCreator";
-import PostDisplay from "../../../components/PostDisplay/PostDisplay";
+import UserPostsDisplay from "../../../components/UserPostsDisplay/UserPostsDisplay";
 
 const MyPosts = () => {
   const { posts, setPosts } = useGetUserPosts();
@@ -11,7 +11,7 @@ const MyPosts = () => {
   return (
     <>
       <PostCreator setPosts={setPosts} />
-      <PostDisplay posts={posts} setPosts={setPosts} />
+      <UserPostsDisplay posts={posts} setPosts={setPosts} />
     </>
   );
 };
