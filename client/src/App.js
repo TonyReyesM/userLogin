@@ -21,7 +21,7 @@ import Register from "./pages/Register";
 import Home from "./pages/dashboard/Home";
 import Projects from "./pages/dashboard/Projects/Projects";
 import MyPosts from "./pages/dashboard/Projects/MyPosts";
-import Post from "./pages/dashboard/Projects/Post";
+import Post from "./pages/Post";
 import Account from "./pages/dashboard/Account";
 import Settings from "./pages/dashboard/Settings";
 

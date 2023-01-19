@@ -8,12 +8,15 @@ const {
   deleteComment,
 } = require("../controllers/comments");
 
+//  Middleware
+import { protect } from "../middleware/authMiddleware";
+
 //  Routes
 
-router.post("/create", createComment);
+router.post("/create", protect, createComment);
 
-router.put("/edit", editComment);
+router.put("/edit", protect, editComment);
 
-router.delete("/delete", deleteComment);
+router.delete("/delete", protect, deleteComment);
 
-module.exports = router;
+export default router;

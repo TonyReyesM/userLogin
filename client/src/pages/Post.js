@@ -1,10 +1,10 @@
 ///  hooks
-import { useGetPost } from "../../../hooks/useGetPost";
+import { useGetPost } from "../hooks/useGetPost";
 
 //  components
-import PostDisplay from "../../../components/PostDisplay/PostDisplay";
-import CommentsSection from "../../../components/CommentsSection/CommentsSection";
-import CommentWriter from "../../../components/CommentWriter/CommentWriter";
+import PostDisplay from "../components/PostDisplay/PostDisplay";
+import CommentsSection from "../components/CommentsSection/CommentsSection";
+import CommentForm from "../components/CommentForm/CommentForm";
 
 const Post = () => {
   const { post, postUser } = useGetPost();
@@ -17,7 +17,7 @@ const Post = () => {
         <>
           <PostDisplay post={post} postUser={postUser} />
           <CommentsSection />
-          <CommentWriter />
+          <CommentForm />
         </>
       )}
     </>
