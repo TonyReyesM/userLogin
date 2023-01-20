@@ -19,7 +19,7 @@ const buttonStyle = {
 const CommentWriter = () => {
   return (
     <Wrapper>
-      <TextAreaInput />
+      <TextAreaInput placeholder="Write a comment" />
       <Button style={buttonStyle}>Submit</Button>
     </Wrapper>
   );

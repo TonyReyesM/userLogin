@@ -17,10 +17,16 @@ const PostWrapper = styled.div`
   flex-direction: column;
   row-gap: 1rem;
   align-items: flex-start;
-  padding: 1rem 0;
+  background-color: ${palette.typography.textLight};
+  color: ${palette.typography.textDark};
+  padding: 2rem;
+  margin: 1rem 0 2rem;
+  border-radius: 0.5rem;
 `;
 
-const PostContent = styled.p``;
+const PostContent = styled.p`
+  line-height: 1.3rem;
+`;
 
 const PostUserInfo = styled.div`
   display: flex;
@@ -43,27 +49,15 @@ const avatarWrapperStyle = {
 const PostDisplay = ({ post, postUser }) => {
   return (
     <PostWrapper>
-      <Title style={{ color: palette.typography.textLight }}>
-        {post.title}
-      </Title>
+      <Title>{post.title}</Title>
       <PostUserInfo>
         <AvatarWrapper style={avatarWrapperStyle}>
           <AvatarImg src={postUser.photo || AlienProfile} style={avatarStyle} />
         </AvatarWrapper>
-        <Title
-          style={{ fontSize: "1rem", color: palette.typography.textLight }}
-        >
-          {postUser.username}
-        </Title>
-        <Title
-          style={{ fontSize: "0.7rem", color: palette.typography.textLight }}
-        >
-          {post.createdAt}
-        </Title>
+        <Title style={{ fontSize: "1rem" }}>{postUser.username}</Title>
+        <Title style={{ fontSize: "0.7rem" }}>{post.createdAt}</Title>
       </PostUserInfo>
-      <PostContent style={{ color: palette.typography.textLight }}>
-        {post.content}
-      </PostContent>
+      <PostContent>{post.content}</PostContent>
     </PostWrapper>
   );
 };

@@ -7,6 +7,7 @@ import UserPostsDisplay from "../../../components/UserPostsDisplay/UserPostsDisp
 
 const MyPosts = () => {
   const { posts, setPosts } = useGetUserPosts();
+  console.log(posts);
 
   return (
     <>

@@ -64,7 +64,7 @@ const ViewButton = styled(Button)`
 //   justify-content: flex-end;
 // `;
 
-const PostDisplay = ({ posts, setPosts }) => {
+const UserPostsDisplay = ({ posts, setPosts }) => {
   const navigate = useNavigate();
   // const [isEditing, setIsEditing] = useState(false);
 
@@ -119,4 +119,4 @@ const PostDisplay = ({ posts, setPosts }) => {
   );
 };
 
-export default PostDisplay;
+export default UserPostsDisplay;
