@@ -1,12 +1,6 @@
 //  libraries
 import styled from "styled-components";
 
-//  hooks
-import { useGetPostComments } from "./hooks/useGetPostComments";
-
-//  assets
-import { AlienProfile } from "../../assets";
-
 //  styles
 import { Title, AvatarImg, AvatarWrapper } from "../common/common.style";
 import { palette } from "../common/palette";
@@ -59,9 +53,7 @@ const avatarWrapperStyle = {
   height: "3rem",
 };
 
-const CommentsSection = () => {
-  const comments = useGetPostComments();
-  // console.log(comments);
+const CommentsSection = ({ comments }) => {
   return (
     <SectionWrapper>
       <Title style={{ color: palette.typography.textLight }}>

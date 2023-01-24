@@ -9,7 +9,9 @@ const createComment = asyncHandler(async (req, res) => {
     throw new Error("Comment data incomplete");
   }
 
-  const comment = await Comment.create({ content, user, post });
+  const comment = await (
+    await Comment.create({ content, user, post })
+  ).populate("user");
 
   if (comment) {
     res.status(201).json({

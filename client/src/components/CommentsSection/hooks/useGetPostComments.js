@@ -25,5 +25,5 @@ export const useGetPostComments = () => {
     getPostComments(id);
   }, []);
 
-  return comments;
+  return { comments, setComments };
 };

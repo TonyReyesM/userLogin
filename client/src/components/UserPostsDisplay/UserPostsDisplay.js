@@ -3,13 +3,8 @@ import styled from "styled-components";
 //  hooks
 import { useNavigate } from "react-router-dom";
 
-//  components
-import { Link } from "react-router-dom";
-
 //  assets
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 
 //  styles
 import { Title, Button } from "../common/common.style";
@@ -57,41 +52,8 @@ const ViewButton = styled(Button)`
   }
 `;
 
-// const ButtonSection = styled.div`
-//   display: flex;
-//   column-gap: 1rem;
-//   width: 100%;
-//   justify-content: flex-end;
-// `;
-
 const UserPostsDisplay = ({ posts, setPosts }) => {
   const navigate = useNavigate();
-  // const [isEditing, setIsEditing] = useState(false);
-
-  // const editPost = useEditPost();
-  // const deletePost = useDeletePost();
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm({
-  //   resolver: yupResolver(createPostSchema),
-  // });
-
-  // const handleDelete = (e) => {
-  //   const id = e.target.id.split("-")[1];
-  //   deletePost(id);
-  //   setPosts(posts.filter((post) => post._id !== id));
-  // };
-
-  // const onSubmit = async (data) => {
-  //   console.log("Edit post!");
-  //   console.log(data);
-  //   const id = e.target.id.split("-")[1];
-  //   console.log(id);
-  //   editPost(id, postData);
-  // };
 
   return (
     <>
@@ -104,14 +66,6 @@ const UserPostsDisplay = ({ posts, setPosts }) => {
               <ViewButton onClick={() => navigate(`/post/${post._id}`)}>
                 <VisibilityIcon style={{ pointerEvents: "none" }} /> View
               </ViewButton>
-              {/* <ButtonSection>
-                  <PostButton id={`edit-${post._id}`}>
-                    <EditIcon style={{ pointerEvents: "none" }} />
-                  </PostButton>
-                  <PostButton id={`delete-${post._id}`}>
-                    <DeleteIcon style={{ pointerEvents: "none" }} />
-                  </PostButton>
-                </ButtonSection> */}
             </PostHolder>
           );
         })}

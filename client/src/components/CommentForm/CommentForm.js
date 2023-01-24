@@ -38,7 +38,7 @@ const buttonStyle = {
   padding: "1rem",
 };
 
-const CommentWriter = () => {
+const CommentWriter = ({ setComments }) => {
   const postComment = usePostComment();
   const location = useLocation();
 
@@ -48,8 +48,9 @@ const CommentWriter = () => {
     resolver: yupResolver(createCommentSchema),
   });
 
-  const onSubmit = (data) => {
-    postComment(data, postID);
+  const onSubmit = async (data) => {
+    const newComment = await postComment(data, postID);
+    setComments((prevState) => [...prevState, newComment]);
   };
 
   return (

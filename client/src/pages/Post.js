@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 //  hooks
 import { useGetPost } from "../hooks/useGetPost";
+import { useGetPostComments } from "../components/CommentsSection/hooks/useGetPostComments";
 
 //  components
 import PostDisplay from "../components/PostDisplay/PostDisplay";
@@ -19,16 +20,15 @@ const Wrapper = styled.div`
 
 const Post = () => {
   const { post, postUser } = useGetPost();
-  // console.log(post);
-  // console.log(postUser);
+  const { comments, setComments } = useGetPostComments();
 
   return (
     <>
-      {post && postUser && (
+      {post && postUser && comments && (
         <Wrapper>
           <PostDisplay post={post} postUser={postUser} />
-          <CommentsSection />
-          <CommentForm />
+          <CommentsSection comments={comments} />
+          <CommentForm setComments={setComments} />
         </Wrapper>
       )}
     </>
