@@ -72,10 +72,10 @@ const CommentsSection = () => {
           return (
             <CommentWrapper key={comment._id}>
               <AvatarWrapper style={avatarWrapperStyle}>
-                <AvatarImg style={avatarStyle} src={AlienProfile} />
+                <AvatarImg style={avatarStyle} src={comment.user.photo} />
               </AvatarWrapper>
               <Comment>
-                <CommentUser>User</CommentUser>
+                <CommentUser>{comment.user.username}</CommentUser>
                 <CommentContent>{comment.content}</CommentContent>
               </Comment>
             </CommentWrapper>
