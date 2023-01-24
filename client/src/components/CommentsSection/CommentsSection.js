@@ -61,7 +61,7 @@ const avatarWrapperStyle = {
 
 const CommentsSection = () => {
   const comments = useGetPostComments();
-  console.log(comments);
+  // console.log(comments);
   return (
     <SectionWrapper>
       <Title style={{ color: palette.typography.textLight }}>

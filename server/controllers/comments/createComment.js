@@ -2,12 +2,7 @@ const Comment = require("../../models/comment");
 const asyncHandler = require("express-async-handler");
 
 const createComment = asyncHandler(async (req, res) => {
-  console.log(req.body);
   const { content, user, post } = req.body;
-
-  console.log(content);
-  console.log(user);
-  console.log(post);
 
   if (!content || !user || !post) {
     res.status(400);

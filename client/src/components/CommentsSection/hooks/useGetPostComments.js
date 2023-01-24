@@ -14,7 +14,7 @@ export const useGetPostComments = () => {
     try {
       const response = await axios.get(`/api/posts/getPostComments/${id}`);
       const postComments = response.data.comments;
-      console.log(postComments);
+      // console.log(postComments);
       setComments(postComments);
     } catch (error) {
       console.log(error);
