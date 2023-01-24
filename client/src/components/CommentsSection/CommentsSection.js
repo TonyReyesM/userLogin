@@ -1,8 +1,11 @@
 //  libraries
 import styled from "styled-components";
 
+//  components
+import CommentDisplay from "../CommentDisplay/CommentDisplay";
+
 //  styles
-import { Title, AvatarImg, AvatarWrapper } from "../common/common.style";
+import { Title } from "../common/common.style";
 import { palette } from "../common/palette";
 
 const SectionWrapper = styled.div`
@@ -17,42 +20,6 @@ const SectionWrapper = styled.div`
   border-color: ${palette.typography.textLight};
 `;
 
-const CommentWrapper = styled.div`
-  display: flex;
-  column-gap: 2rem;
-  align-items: flex-start;
-  background-color: ${palette.typography.textLight};
-  padding: 2rem;
-  margin: 1rem 0 2rem;
-  border-radius: 0.5rem;
-  width: 100%;
-`;
-
-const Comment = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-  color: ${palette.typography.textDark};
-`;
-
-const CommentUser = styled.div`
-  font-weight: bold;
-`;
-
-const CommentContent = styled.div``;
-
-const avatarStyle = {
-  position: "static",
-  width: "3rem",
-  height: "3rem",
-};
-
-const avatarWrapperStyle = {
-  position: "static",
-  width: "3rem",
-  height: "3rem",
-};
-
 const CommentsSection = ({ comments }) => {
   return (
     <SectionWrapper>
@@ -61,17 +28,7 @@ const CommentsSection = ({ comments }) => {
       </Title>
       {comments &&
         comments.map((comment) => {
-          return (
-            <CommentWrapper key={comment._id}>
-              <AvatarWrapper style={avatarWrapperStyle}>
-                <AvatarImg style={avatarStyle} src={comment.user.photo} />
-              </AvatarWrapper>
-              <Comment>
-                <CommentUser>{comment.user.username}</CommentUser>
-                <CommentContent>{comment.content}</CommentContent>
-              </Comment>
-            </CommentWrapper>
-          );
+          return <CommentDisplay key={comment._id} comment={comment} />;
         })}
     </SectionWrapper>
   );

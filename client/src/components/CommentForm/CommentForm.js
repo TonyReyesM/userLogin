@@ -2,6 +2,7 @@
 import styled from "styled-components";
 
 //  hooks
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { usePostComment } from "./hooks/usePostComment";
 import { useForm } from "react-hook-form";
@@ -39,6 +40,7 @@ const buttonStyle = {
 };
 
 const CommentWriter = ({ setComments }) => {
+  const [inputValue, setInputValue] = useState("");
   const postComment = usePostComment();
   const location = useLocation();
 
@@ -51,6 +53,11 @@ const CommentWriter = ({ setComments }) => {
   const onSubmit = async (data) => {
     const newComment = await postComment(data, postID);
     setComments((prevState) => [...prevState, newComment]);
+    setInputValue("");
+  };
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
   };
 
   return (
@@ -59,6 +66,8 @@ const CommentWriter = ({ setComments }) => {
         <TextAreaInput
           id="content"
           placeholder="Write a comment"
+          value={inputValue}
+          onChange={(e) => handleChange(e)}
           {...register("content")}
         />
         <Button style={buttonStyle} type="submit">
