@@ -1,9 +1,8 @@
 //  libraries
 import styled from "styled-components";
 
-//  hooks
-import { useGetPost } from "../hooks/useGetPost";
-import { useGetPostComments } from "../components/CommentsSection/hooks/useGetPostComments";
+//  contexts
+import { PostProvider } from "../contexts/PostProvider";
 
 //  components
 import PostDisplay from "../components/PostDisplay/PostDisplay";
@@ -19,19 +18,14 @@ const Wrapper = styled.div`
 `;
 
 const Post = () => {
-  const { post, postUser } = useGetPost();
-  const { comments, setComments } = useGetPostComments();
-
   return (
-    <>
-      {post && postUser && comments && (
-        <Wrapper>
-          <PostDisplay post={post} postUser={postUser} />
-          <CommentsSection comments={comments} />
-          <CommentForm setComments={setComments} />
-        </Wrapper>
-      )}
-    </>
+    <PostProvider>
+      <Wrapper>
+        <PostDisplay />
+        <CommentsSection />
+        <CommentForm />
+      </Wrapper>
+    </PostProvider>
   );
 };
 

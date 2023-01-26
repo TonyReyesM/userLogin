@@ -2,8 +2,6 @@
 import styled from "styled-components";
 
 //  hooks
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import { usePostComment } from "./hooks/usePostComment";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,6 +12,7 @@ import { createCommentSchema } from "../../validations/createCommentValidation";
 //  styles
 import { TextAreaInput, Button, Form } from "../common/common.style";
 import { palette } from "../common/palette";
+import { usePost } from "../../hooks/usePost";
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,25 +38,18 @@ const buttonStyle = {
   padding: "1rem",
 };
 
-const CommentWriter = ({ setComments }) => {
-  const [inputValue, setInputValue] = useState("");
+const CommentWriter = () => {
+  const { setComments } = usePost();
   const postComment = usePostComment();
-  const location = useLocation();
 
-  const postID = location.pathname.split("/").slice(-1)[0];
-
-  const { register, handleSubmit } = useForm({
+  const { register, reset, handleSubmit } = useForm({
     resolver: yupResolver(createCommentSchema),
   });
 
   const onSubmit = async (data) => {
-    const newComment = await postComment(data, postID);
+    const newComment = await postComment(data);
     setComments((prevState) => [...prevState, newComment]);
-    setInputValue("");
-  };
-
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
+    reset();
   };
 
   return (
@@ -66,8 +58,6 @@ const CommentWriter = ({ setComments }) => {
         <TextAreaInput
           id="content"
           placeholder="Write a comment"
-          value={inputValue}
-          onChange={(e) => handleChange(e)}
           {...register("content")}
         />
         <Button style={buttonStyle} type="submit">

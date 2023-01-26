@@ -1,6 +1,9 @@
 //  libraries
 import styled from "styled-components";
 
+//  hooks
+import { usePost } from "../../hooks/usePost";
+
 //  components
 import CommentDisplay from "../CommentDisplay/CommentDisplay";
 
@@ -20,17 +23,23 @@ const SectionWrapper = styled.div`
   border-color: ${palette.typography.textLight};
 `;
 
-const CommentsSection = ({ comments }) => {
+const CommentsSection = () => {
+  const { comments } = usePost();
+
   return (
-    <SectionWrapper>
-      <Title style={{ color: palette.typography.textLight }}>
-        Comments ({comments && comments.length})
-      </Title>
-      {comments &&
-        comments.map((comment) => {
-          return <CommentDisplay key={comment._id} comment={comment} />;
-        })}
-    </SectionWrapper>
+    <>
+      {comments && (
+        <SectionWrapper>
+          <Title style={{ color: palette.typography.textLight }}>
+            Comments ({comments && comments.length})
+          </Title>
+          {comments &&
+            comments.map((comment) => {
+              return <CommentDisplay key={comment._id} comment={comment} />;
+            })}
+        </SectionWrapper>
+      )}
+    </>
   );
 };
 

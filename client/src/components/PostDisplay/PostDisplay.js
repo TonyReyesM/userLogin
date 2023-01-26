@@ -1,6 +1,9 @@
 //  libraries
 import styled from "styled-components";
 
+//  hooks
+import { usePost } from "../../hooks/usePost";
+
 //  assets
 import { AlienProfile } from "../../assets";
 
@@ -46,19 +49,28 @@ const avatarWrapperStyle = {
   height: "2rem",
 };
 
-const PostDisplay = ({ post, postUser }) => {
+const PostDisplay = () => {
+  const { post, postUser } = usePost();
+
   return (
-    <PostWrapper>
-      <Title>{post.title}</Title>
-      <PostUserInfo>
-        <AvatarWrapper style={avatarWrapperStyle}>
-          <AvatarImg src={postUser.photo || AlienProfile} style={avatarStyle} />
-        </AvatarWrapper>
-        <Title style={{ fontSize: "1rem" }}>{postUser.username}</Title>
-        <Title style={{ fontSize: "0.7rem" }}>{post.createdAt}</Title>
-      </PostUserInfo>
-      <PostContent>{post.content}</PostContent>
-    </PostWrapper>
+    <>
+      {post && postUser && (
+        <PostWrapper>
+          <Title>{post.title}</Title>
+          <PostUserInfo>
+            <AvatarWrapper style={avatarWrapperStyle}>
+              <AvatarImg
+                src={postUser.photo || AlienProfile}
+                style={avatarStyle}
+              />
+            </AvatarWrapper>
+            <Title style={{ fontSize: "1rem" }}>{postUser.username}</Title>
+            <Title style={{ fontSize: "0.7rem" }}>{post.createdAt}</Title>
+          </PostUserInfo>
+          <PostContent>{post.content}</PostContent>
+        </PostWrapper>
+      )}
+    </>
   );
 };
 

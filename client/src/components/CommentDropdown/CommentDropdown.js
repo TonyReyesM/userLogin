@@ -2,7 +2,10 @@
 import styled from "styled-components";
 
 //  hooks
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { usePost } from "../../hooks/usePost";
+import { useEditComment } from "./hooks/useEditComment";
+import { useDeleteComment } from "./hooks/useDeleteComment";
 
 //  assets
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -13,7 +16,6 @@ import CloseIcon from "@mui/icons-material/Close";
 //  styles
 import { Button } from "../common/common.style";
 import { palette } from "../common/palette";
-import { Close } from "@mui/icons-material";
 
 const Dropdown = styled.div``;
 
@@ -23,14 +25,23 @@ const DotsButton = styled(Button)`
   color: ${palette.typography.textDark};
   padding: 0.3rem;
   align-self: flex-start;
+  justify-content: center;
+`;
+
+const MenuBackground = styled.div`
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(200, 200, 200, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 `;
 
 const Menu = styled.div`
   display: flex;
   flex-direction: column;
-  /* position: relative;
-  top: 0;
-  left: 10; */
+  position: absolute;
   padding: 0.5rem;
   border-style: solid;
   border-color: ${palette.typography.textDark};
@@ -38,48 +49,69 @@ const Menu = styled.div`
   border-radius: 10px;
   width: 7rem;
   height: fit-content;
-  row-gap: 10px;
+  background-color: rgba(200, 200, 200, 0.9);
+  z-index: 2;
 `;
 
 const MenuItem = styled.div`
   display: flex;
   column-gap: 5px;
   align-items: center;
+  border-radius: 20px;
+  padding: 0.5rem;
+  color: ${palette.typography.textDark};
 
   &:hover {
     background-color: rgba(200, 200, 200, 0.8);
-    color: ${palette.typography.textDark};
   }
 `;
 
 const CommentDropdown = ({ comment }) => {
   const [open, setOpen] = useState(false);
+  // const editComment = useEditComment();
+  const deleteComment = useDeleteComment();
+  const { setComments } = usePost();
 
-  const handleClick = () => {
+  const handleOpen = () => {
     setOpen(!open);
+  };
+
+  const handleDelete = (_id) => {
+    deleteComment(comment._id);
+    setComments((prev) => {
+      return prev.filter((com) => com._id !== comment._id);
+    });
+  };
+
+  const handleEdit = () => {
+    console.log("Edit comment");
+    // editComment()
   };
 
   return (
     <Dropdown>
-      <DotsButton onClick={handleClick}>
+      <DotsButton onClick={handleOpen}>
         <MoreVertIcon style={{ pointerEvents: "none" }} />
       </DotsButton>
 
       {open && (
-        <Menu>
-          <MenuItem>
-            <EditIcon />
-            Edit
-          </MenuItem>
-          <MenuItem>
-            <DeleteIcon />
-            Delete
-          </MenuItem>
-          <MenuItem>
-            <CloseIcon />
-            Close
-          </MenuItem>
-        </Menu>
+        <>
+          <MenuBackground onClick={handleOpen} />
+          <Menu>
+            <MenuItem onClick={handleEdit}>
+              <EditIcon style={{ pointerEvents: "none" }} />
+              Edit
+            </MenuItem>
+            <MenuItem onClick={handleDelete}>
+              <DeleteIcon style={{ pointerEvents: "none" }} />
+              Delete
+            </MenuItem>
+            <MenuItem onClick={handleOpen}>
+              <CloseIcon style={{ pointerEvents: "none" }} />
+              Close
+            </MenuItem>
+          </Menu>
+        </>
       )}
     </Dropdown>
   );
