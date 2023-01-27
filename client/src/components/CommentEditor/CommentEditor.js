@@ -37,7 +37,7 @@ const CancelButton = styled(Button)`
 `;
 
 const CommentEditor = ({ comment, setIsEditing }) => {
-  const { comments, setComments } = usePost();
+  const { comments, setComments, setOpenCommentEditor } = usePost();
   const editComment = useEditComment();
 
   const { register, handleSubmit } = useForm({
@@ -49,6 +49,7 @@ const CommentEditor = ({ comment, setIsEditing }) => {
 
   const closeEditor = () => {
     setIsEditing(false);
+    setOpenCommentEditor(false);
   };
 
   const onSubmit = async (newComment) => {
@@ -61,6 +62,7 @@ const CommentEditor = ({ comment, setIsEditing }) => {
     ];
     setComments(newComments);
     setIsEditing(false);
+    setOpenCommentEditor(false);
   };
 
   return (

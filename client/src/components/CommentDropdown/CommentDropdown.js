@@ -66,12 +66,12 @@ const MenuItem = styled.div`
 `;
 
 const CommentDropdown = ({ comment, setIsEditing }) => {
-  const [open, setOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
   const deleteComment = useDeleteComment();
-  const { setComments } = usePost();
+  const { setComments, openCommentEditor, setOpenCommentEditor } = usePost();
 
   const handleOpen = () => {
-    setOpen(!open);
+    setOpenDropdown(!openDropdown);
   };
 
   const handleDelete = (_id) => {
@@ -82,18 +82,18 @@ const CommentDropdown = ({ comment, setIsEditing }) => {
   };
 
   const handleEdit = () => {
-    console.log("Edit comment");
     setIsEditing(true);
-    setOpen(false);
+    setOpenDropdown(false);
+    setOpenCommentEditor(true);
   };
 
   return (
     <Dropdown>
-      <DotsButton onClick={handleOpen}>
+      <DotsButton disabled={openCommentEditor} onClick={handleOpen}>
         <MoreVertIcon style={{ pointerEvents: "none" }} />
       </DotsButton>
 
-      {open && (
+      {openDropdown && (
         <>
           <MenuBackground onClick={handleOpen} />
           <Menu>
