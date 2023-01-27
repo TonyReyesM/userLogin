@@ -1,5 +1,5 @@
-const RefreshToken = require("../../models/refreshToken");
-const asyncHandler = require("express-async-handler");
+import RefreshToken from "../../models/refreshToken";
+import asyncHandler from "express-async-handler";
 
 // @desc    Logout user
 // @route   DELETE /api/users/logout
@@ -10,4 +10,4 @@ const logoutUser = asyncHandler(async (req, res) => {
   res.status(204).json({ message: "Refresh token deleted" });
 });
 
-module.exports = logoutUser;
+export default logoutUser;
