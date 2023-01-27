@@ -20,6 +20,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/dashboard/Home";
 import Projects from "./pages/dashboard/Projects/Projects";
+import CreatePost from "./pages/dashboard/Projects/CreatePost";
 import MyPosts from "./pages/dashboard/Projects/MyPosts";
 import Post from "./pages/Post";
 import Account from "./pages/dashboard/Account";
@@ -57,6 +58,7 @@ function App() {
             <Route path="/dashboard/:id" element={<Home />} />
             <Route path="/dashboard/:id/projects" element={<Projects />} />
             <Route path="/dashboard/:id/my-posts" element={<MyPosts />} />
+            <Route path="/dashboard/:id/create-post" element={<CreatePost />} />
             <Route path="/dashboard/:id/account" element={<Account />} />
             <Route path="/dashboard/:id/settings" element={<Settings />} />
           </Route>
