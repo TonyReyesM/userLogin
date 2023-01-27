@@ -7,11 +7,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 //  validations
-import { createCommentSchema } from "../../validations/createCommentValidation";
+import { commentSchema } from "../../validations/commentValidation";
 
 //  styles
-import { TextAreaInput, Button, Form } from "../common/common.style";
-import { palette } from "../common/palette";
+import { TextAreaInput, Button } from "../common/common.style";
 import { usePost } from "../../hooks/usePost";
 
 const Wrapper = styled.div`
@@ -23,27 +22,16 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const CommentForm = styled(Form)`
-  border-width: 0;
-  row-gap: 0;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  max-width: 100%;
-  background-color: ${palette.background.light};
-  margin-bottom: 2rem;
-`;
-
 const buttonStyle = {
   padding: "1rem",
 };
 
 const CommentWriter = () => {
-  const { setComments } = usePost();
+  const { post, setComments } = usePost();
   const postComment = usePostComment();
 
   const { register, reset, handleSubmit } = useForm({
-    resolver: yupResolver(createCommentSchema),
+    resolver: yupResolver(commentSchema),
   });
 
   const onSubmit = async (data) => {
@@ -53,18 +41,22 @@ const CommentWriter = () => {
   };
 
   return (
-    <CommentForm onSubmit={handleSubmit(onSubmit)}>
-      <Wrapper>
-        <TextAreaInput
-          id="content"
-          placeholder="Write a comment"
-          {...register("content")}
-        />
-        <Button style={buttonStyle} type="submit">
-          Submit
-        </Button>
-      </Wrapper>
-    </CommentForm>
+    <>
+      {post && (
+        <form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
+          <Wrapper>
+            <TextAreaInput
+              id="content"
+              placeholder="Write a comment"
+              {...register("content")}
+            />
+            <Button style={buttonStyle} type="submit">
+              Submit
+            </Button>
+          </Wrapper>
+        </form>
+      )}
+    </>
   );
 };
 

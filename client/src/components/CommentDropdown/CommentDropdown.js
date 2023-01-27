@@ -4,7 +4,6 @@ import styled from "styled-components";
 //  hooks
 import { useState } from "react";
 import { usePost } from "../../hooks/usePost";
-import { useEditComment } from "./hooks/useEditComment";
 import { useDeleteComment } from "./hooks/useDeleteComment";
 
 //  assets
@@ -49,7 +48,7 @@ const Menu = styled.div`
   border-radius: 10px;
   width: 7rem;
   height: fit-content;
-  background-color: rgba(200, 200, 200, 0.9);
+  background-color: rgba(210, 210, 210, 0.9);
   z-index: 2;
 `;
 
@@ -62,13 +61,12 @@ const MenuItem = styled.div`
   color: ${palette.typography.textDark};
 
   &:hover {
-    background-color: rgba(200, 200, 200, 0.8);
+    background-color: rgba(230, 230, 230, 0.9);
   }
 `;
 
-const CommentDropdown = ({ comment }) => {
+const CommentDropdown = ({ comment, setIsEditing }) => {
   const [open, setOpen] = useState(false);
-  // const editComment = useEditComment();
   const deleteComment = useDeleteComment();
   const { setComments } = usePost();
 
@@ -85,7 +83,8 @@ const CommentDropdown = ({ comment }) => {
 
   const handleEdit = () => {
     console.log("Edit comment");
-    // editComment()
+    setIsEditing(true);
+    setOpen(false);
   };
 
   return (

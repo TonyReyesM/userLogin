@@ -21,7 +21,7 @@ const editComment = asyncHandler(async (req, res) => {
       },
     },
     { returnOriginal: false }
-  );
+  ).populate("user");
 
   res.status(200).json({
     message: "Updated comment",

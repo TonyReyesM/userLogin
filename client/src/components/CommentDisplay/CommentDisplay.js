@@ -1,8 +1,12 @@
 //  libraries
 import styled from "styled-components";
 
+//  hooks
+import { useState } from "react";
+
 //  components
 import CommentDropdown from "../CommentDropdown/CommentDropdown";
+import CommentEditor from "../CommentEditor/CommentEditor";
 
 //  styles
 import { AvatarImg, AvatarWrapper } from "../common/common.style";
@@ -50,6 +54,8 @@ const avatarWrapperStyle = {
 };
 
 const CommentDisplay = ({ comment }) => {
+  const [isEditing, setIsEditing] = useState(false);
+
   return (
     <CommentWrapper>
       <AvatarWrapper style={avatarWrapperStyle}>
@@ -57,9 +63,13 @@ const CommentDisplay = ({ comment }) => {
       </AvatarWrapper>
       <Comment>
         <CommentUser>{comment.user.username}</CommentUser>
-        <CommentContent>{comment.content}</CommentContent>
+        {!isEditing ? (
+          <CommentContent>{comment.content}</CommentContent>
+        ) : (
+          <CommentEditor comment={comment} setIsEditing={setIsEditing} />
+        )}
       </Comment>
-      <CommentDropdown comment={comment} />
+      <CommentDropdown comment={comment} setIsEditing={setIsEditing} />
     </CommentWrapper>
   );
 };
