@@ -1,7 +1,7 @@
 const Post = require("../../models/post");
 const asyncHandler = require("express-async-handler");
 
-const getPosts = asyncHandler(async (req, res) => {
+const getUserPosts = asyncHandler(async (req, res) => {
   const id = req.params.id;
 
   const posts = await Post.find({ user: id });
@@ -11,4 +11,4 @@ const getPosts = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = getPosts;
+module.exports = getUserPosts;

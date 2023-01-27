@@ -1,96 +1,75 @@
+//  libraries
 import styled from "styled-components";
 
 //  hooks
-import { useDeletePost } from "./hooks/useDeletePost";
+import { usePost } from "../../hooks/usePost";
 
 //  assets
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
+import { AlienProfile } from "../../assets";
 
 //  styles
-import { Title, Button } from "../common/common.style";
-import { palette } from "../common/palette";
+import {
+  Title,
+  AvatarImg,
+  AvatarWrapper,
+} from "../../components/common/common.style";
+import { palette } from "../../components/common/palette";
 
-const PostHolder = styled.div`
+const PostWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  row-gap: 1rem;
   align-items: flex-start;
-  border-radius: 0.5rem;
-  row-gap: 1.5rem;
-  margin: 3rem;
-  padding: 3rem;
   background-color: ${palette.typography.textLight};
   color: ${palette.typography.textDark};
-  width: 40vw;
-  max-width: 40rem;
+  padding: 2rem;
+  margin: 1rem 0 2rem;
+  border-radius: 0.5rem;
 `;
 
-const PostTitle = styled(Title)`
-  text-align: left;
+const PostContent = styled.p`
+  line-height: 1.3rem;
 `;
 
-const PostContent = styled.p``;
-
-const PostButton = styled(Button)`
-  background-color: ${palette.background.dark};
-  color: white;
-  padding: 0.6rem;
-  border-radius: 5px;
-
-  &:hover {
-    background-color: rgba(200, 200, 200, 0.8);
-    color: ${palette.typography.textDark};
-  }
-`;
-
-const ButtonSection = styled.div`
+const PostUserInfo = styled.div`
   display: flex;
+  align-items: center;
   column-gap: 1rem;
-  width: 100%;
-  justify-content: flex-end;
 `;
 
-const PostDisplay = ({ posts, setPosts }) => {
-  const deletePost = useDeletePost();
+const avatarStyle = {
+  position: "static",
+  width: "2rem",
+  height: "2rem",
+};
 
-  const handleDelete = (e) => {
-    const id = e.target.id.split("-")[1];
-    deletePost(id);
-    setPosts(posts.filter((post) => post._id !== id));
-  };
+const avatarWrapperStyle = {
+  position: "static",
+  width: "2rem",
+  height: "2rem",
+};
 
-  const handleEdit = (e) => {
-    const id = e.target.id.split("-")[1];
-    console.log(id);
-    // editPost(id);
-  };
+const PostDisplay = () => {
+  const { post, postUser } = usePost();
 
   return (
     <>
-      {posts &&
-        posts.map((post) => {
-          return (
-            <PostHolder key={post._id}>
-              <PostTitle>{post.title}</PostTitle>
-              <PostContent>{post.content}</PostContent>
-              <ButtonSection>
-                <PostButton
-                  id={`edit-${post._id}`}
-                  onClick={(e) => handleEdit(e)}
-                >
-                  <EditIcon style={{ pointerEvents: "none" }} />
-                </PostButton>
-                <PostButton
-                  id={`delete-${post._id}`}
-                  onClick={(e) => handleDelete(e)}
-                >
-                  <DeleteIcon style={{ pointerEvents: "none" }} />
-                </PostButton>
-              </ButtonSection>
-            </PostHolder>
-          );
-        })}
+      {post && postUser && (
+        <PostWrapper>
+          <Title>{post.title}</Title>
+          <PostUserInfo>
+            <AvatarWrapper style={avatarWrapperStyle}>
+              <AvatarImg
+                src={postUser.photo || AlienProfile}
+                style={avatarStyle}
+              />
+            </AvatarWrapper>
+            <Title style={{ fontSize: "1rem" }}>{postUser.username}</Title>
+            <Title style={{ fontSize: "0.7rem" }}>{post.createdAt}</Title>
+          </PostUserInfo>
+          <PostContent>{post.content}</PostContent>
+        </PostWrapper>
+      )}
     </>
   );
 };
