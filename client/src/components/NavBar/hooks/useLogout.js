@@ -10,8 +10,11 @@ export const useLogout = () => {
   const logout = async () => {
     try {
       const refreshToken = auth.refreshToken;
+
       await axios.delete("/api/users/logout", {
-        token: refreshToken,
+        data: {
+          token: refreshToken,
+        },
       });
       setAuth({});
       localStorage.removeItem("user");
