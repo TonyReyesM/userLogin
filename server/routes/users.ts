@@ -1,8 +1,6 @@
-const express = require("express");
-const router = express.Router();
-
+import express from "express";
 //  Controllers
-const {
+import {
   registerUser,
   loginUser,
   logoutUser,
@@ -11,26 +9,24 @@ const {
   deleteUser,
   updateUserPassword,
   refreshAccessToken,
-} = require("../controllers/users");
-
+  followUser,
+} from "../controllers/users";
 //  Middleware
-const { protect } = require("../middleware/authMiddleware");
+import { protect } from "../middleware/authMiddleware";
 
 //  Routes
+const router = express.Router();
+
 router.post("/register", registerUser);
-
 router.post("/login", loginUser);
-
 router.delete("/logout", logoutUser);
-
 router.get("/me", protect, getUser);
-
 router.put("/:id", protect, updateUser);
-
 router.put("/password/:id", protect, updateUserPassword);
-
 router.delete("/:id", protect, deleteUser);
-
 router.post("/token", refreshAccessToken);
 
-module.exports = router;
+// Follow interaction
+router.post("/follow/:id", protect, followUser);
+
+export default router;
