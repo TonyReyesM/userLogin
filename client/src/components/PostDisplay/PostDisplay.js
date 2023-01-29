@@ -4,6 +4,9 @@ import styled from "styled-components";
 //  hooks
 import { usePost } from "../../hooks/usePost";
 
+//  componets
+import PostDropdown from "../PostDropdown/PostDropdown";
+
 //  assets
 import { AlienProfile } from "../../assets";
 
@@ -25,6 +28,13 @@ const PostWrapper = styled.div`
   padding: 2rem;
   margin: 1rem 0 2rem;
   border-radius: 0.5rem;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 `;
 
 const PostContent = styled.p`
@@ -56,7 +66,10 @@ const PostDisplay = () => {
     <>
       {post && postUser && (
         <PostWrapper>
-          <Title>{post.title}</Title>
+          <Header>
+            <Title>{post.title}</Title>
+            <PostDropdown />
+          </Header>
           <PostUserInfo>
             <AvatarWrapper style={avatarWrapperStyle}>
               <AvatarImg
