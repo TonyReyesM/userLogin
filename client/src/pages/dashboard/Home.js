@@ -1,6 +1,8 @@
 // hooks
-import { useState } from "react";
 import { useGetFeedPosts } from "../../components/UserPostsDisplay/hooks/useGetFeedPosts";
+
+//  components
+import UserPostsDisplay from "../../components/UserPostsDisplay/UserPostsDisplay";
 
 //  styles
 import { Title } from "../../components/common/common.style";
@@ -10,7 +12,7 @@ const Home = () => {
   const { feedPosts, setFeedPosts } = useGetFeedPosts();
   console.log(feedPosts);
 
-  return <Title style={{ color: palette.typography.textLight }}>Home</Title>;
+  return <UserPostsDisplay posts={feedPosts} setPosts={setFeedPosts} />;
 };
 
 export default Home;
