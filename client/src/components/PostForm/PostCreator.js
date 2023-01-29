@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useCreatePost } from "./hooks/useCreatePost";
 
 //  validations
-import { createPostSchema } from "../../validations/createPostValidation";
+import { postSchema } from "../../validations/postValidation";
 
 //  styles
 import {
@@ -40,7 +40,7 @@ const PostCreator = ({ setPosts }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(createPostSchema),
+    resolver: yupResolver(postSchema),
   });
 
   const onSubmit = async (data) => {

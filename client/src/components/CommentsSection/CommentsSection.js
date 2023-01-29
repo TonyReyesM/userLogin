@@ -24,11 +24,11 @@ const SectionWrapper = styled.div`
 `;
 
 const CommentsSection = () => {
-  const { comments } = usePost();
+  const { comments, openEditor } = usePost();
 
   return (
     <>
-      {comments && (
+      {openEditor.type !== "post" && comments && (
         <SectionWrapper>
           <Title style={{ color: palette.typography.textLight }}>
             Comments ({comments && comments.length})

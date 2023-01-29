@@ -13,20 +13,15 @@ export const useGetFeedPosts = () => {
       const response = await axiosPrivate.get(
         `/api/posts/getFeedPosts/${auth.user._id}`
       );
-      console.log(response);
       setFeedPosts(response.data.posts);
     } catch (error) {
-      console.log();
+      console.log(error);
     }
   };
 
   useEffect(() => {
     getFeedPosts();
   }, []);
-
-  useEffect(() => {
-    console.log(feedPosts);
-  }, [feedPosts]);
 
   return { feedPosts, setFeedPosts };
 };

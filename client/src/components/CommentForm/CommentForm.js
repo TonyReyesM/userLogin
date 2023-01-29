@@ -27,7 +27,7 @@ const buttonStyle = {
 };
 
 const CommentWriter = () => {
-  const { post, setComments } = usePost();
+  const { post, setComments, openEditor } = usePost();
   const postComment = usePostComment();
 
   const { register, reset, handleSubmit } = useForm({
@@ -42,7 +42,7 @@ const CommentWriter = () => {
 
   return (
     <>
-      {post && (
+      {openEditor.type === "none" && post && (
         <form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
           <Wrapper>
             <TextAreaInput

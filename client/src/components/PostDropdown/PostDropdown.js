@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 //  hooks
 import { useState } from "react";
-// import { usePost } from "../../hooks/usePost";
+import { usePost } from "../../hooks/usePost";
 import { useDeletePost } from "./hooks/useDeletePost";
 
 //  assets
@@ -65,13 +65,17 @@ const MenuItem = styled.div`
   }
 `;
 
-const PostDropdown = ({ comment, setIsEditing }) => {
+const PostDropdown = ({ post, setIsEditing }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
+  const { openEditor, setOpenEditor } = usePost();
   const deletePost = useDeletePost();
-  //   const {  } = usePost();
 
   const handleOpen = () => {
     setOpenDropdown(!openDropdown);
+    setOpenEditor({
+      isEditing: true,
+      type: "post",
+    });
   };
 
   const handleDelete = () => {
@@ -81,12 +85,15 @@ const PostDropdown = ({ comment, setIsEditing }) => {
   const handleEdit = () => {
     setIsEditing(true);
     setOpenDropdown(false);
-    // setOpenPostEditor(true);
+    setOpenEditor({
+      isEditing: true,
+      type: "post",
+    });
   };
 
   return (
     <Dropdown>
-      <DotsButton onClick={handleOpen}>
+      <DotsButton disabled={openEditor.isEditing} onClick={handleOpen}>
         <MoreVertIcon style={{ pointerEvents: "none" }} />
       </DotsButton>
 

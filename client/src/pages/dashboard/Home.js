@@ -1,12 +1,11 @@
 // hooks
-import { useGetFeedPosts } from "../../components/UserPostsDisplay/hooks/useGetFeedPosts";
+import { useGetFeedPosts } from "../../components/MultiplePostsDisplay/hooks/useGetFeedPosts";
 
 //  components
 import MultiplePostsDisplay from "../../components/MultiplePostsDisplay/MultiplePostsDisplay";
 
 const Home = () => {
   const { feedPosts, setFeedPosts } = useGetFeedPosts();
-  console.log(feedPosts);
 
   return <MultiplePostsDisplay posts={feedPosts} setPosts={setFeedPosts} />;
 };

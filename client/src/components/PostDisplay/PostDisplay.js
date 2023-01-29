@@ -2,10 +2,12 @@
 import styled from "styled-components";
 
 //  hooks
+import { useState } from "react";
 import { usePost } from "../../hooks/usePost";
 
 //  componets
 import PostDropdown from "../PostDropdown/PostDropdown";
+import PostEditor from "../PostEditor/PostEditor";
 
 //  assets
 import { AlienProfile } from "../../assets";
@@ -62,26 +64,33 @@ const avatarWrapperStyle = {
 
 const PostDisplay = () => {
   const { post, postUser } = usePost();
+  const [isEditing, setIsEditing] = useState(false);
 
   return (
     <>
       {post && postUser && (
         <PostWrapper>
-          <Header>
-            <Title>{post.title}</Title>
-            <PostDropdown />
-          </Header>
-          <PostUserInfo>
-            <AvatarWrapper style={avatarWrapperStyle}>
-              <AvatarImg
-                src={postUser.photo || AlienProfile}
-                style={avatarStyle}
-              />
-            </AvatarWrapper>
-            <Title style={{ fontSize: "1rem" }}>{postUser.username}</Title>
-            <Title style={{ fontSize: "0.7rem" }}>{post.createdAt}</Title>
-          </PostUserInfo>
-          <PostContent>{post.content}</PostContent>
+          {!isEditing ? (
+            <>
+              <Header>
+                <Title>{post.title}</Title>
+                <PostDropdown setIsEditing={setIsEditing} />
+              </Header>
+              <PostUserInfo>
+                <AvatarWrapper style={avatarWrapperStyle}>
+                  <AvatarImg
+                    src={postUser.photo || AlienProfile}
+                    style={avatarStyle}
+                  />
+                </AvatarWrapper>
+                <Title style={{ fontSize: "1rem" }}>{postUser.username}</Title>
+                <Title style={{ fontSize: "0.7rem" }}>{post.createdAt}</Title>
+              </PostUserInfo>
+              <PostContent>{post.content}</PostContent>
+            </>
+          ) : (
+            <PostEditor post={post} setIsEditing={setIsEditing} />
+          )}
         </PostWrapper>
       )}
     </>
