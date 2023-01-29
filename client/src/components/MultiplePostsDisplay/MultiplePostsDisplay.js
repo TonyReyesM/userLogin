@@ -52,7 +52,7 @@ const ViewButton = styled(Button)`
   }
 `;
 
-const UserPostsDisplay = ({ posts, setPosts }) => {
+const MultiplePostsDisplay = ({ posts, setPosts }) => {
   const navigate = useNavigate();
 
   return (
@@ -73,4 +73,4 @@ const UserPostsDisplay = ({ posts, setPosts }) => {
   );
 };
 
-export default UserPostsDisplay;
+export default MultiplePostsDisplay;

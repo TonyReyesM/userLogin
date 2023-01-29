@@ -10,7 +10,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import AddIcon from "@mui/icons-material/Add";
 
 //  components
-import UserPostsDisplay from "../../../components/UserPostsDisplay/UserPostsDisplay";
+import MultiplePostsDisplay from "../../../components/MultiplePostsDisplay/MultiplePostsDisplay";
 
 //  styles
 import { Button } from "../../../components/common/common.style";
@@ -40,7 +40,7 @@ const MyPosts = () => {
         <AddIcon style={{ pointerEvents: "none" }} />
         Create Post
       </CreateButton>
-      <UserPostsDisplay posts={posts} setPosts={setPosts} />
+      <MultiplePostsDisplay posts={posts} setPosts={setPosts} />
     </>
   );
 };

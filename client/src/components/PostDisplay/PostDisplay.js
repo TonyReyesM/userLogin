@@ -21,6 +21,7 @@ import { palette } from "../../components/common/palette";
 const PostWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   row-gap: 1rem;
   align-items: flex-start;
   background-color: ${palette.typography.textLight};

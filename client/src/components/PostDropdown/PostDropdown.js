@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 //  hooks
 import { useState } from "react";
-import { usePost } from "../../hooks/usePost";
+// import { usePost } from "../../hooks/usePost";
+import { useDeletePost } from "./hooks/useDeletePost";
 
 //  assets
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -66,14 +67,15 @@ const MenuItem = styled.div`
 
 const PostDropdown = ({ comment, setIsEditing }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
+  const deletePost = useDeletePost();
   //   const {  } = usePost();
 
   const handleOpen = () => {
     setOpenDropdown(!openDropdown);
   };
 
-  const handleDelete = (_id) => {
-    // deletePost(post._id);
+  const handleDelete = () => {
+    deletePost();
   };
 
   const handleEdit = () => {
