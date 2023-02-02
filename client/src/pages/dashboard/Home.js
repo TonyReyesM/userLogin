@@ -1,18 +1,13 @@
 // hooks
-import { useGetFeedPosts } from "../../components/UserPostsDisplay/hooks/useGetFeedPosts";
+import { useGetFeedPosts } from "../../components/MultiplePostsDisplay/hooks/useGetFeedPosts";
 
 //  components
-import UserPostsDisplay from "../../components/UserPostsDisplay/UserPostsDisplay";
-
-//  styles
-import { Title } from "../../components/common/common.style";
-import { palette } from "../../components/common/palette";
+import MultiplePostsDisplay from "../../components/MultiplePostsDisplay/MultiplePostsDisplay";
 
 const Home = () => {
   const { feedPosts, setFeedPosts } = useGetFeedPosts();
-  console.log(feedPosts);
 
-  return <UserPostsDisplay posts={feedPosts} setPosts={setFeedPosts} />;
+  return <MultiplePostsDisplay posts={feedPosts} setPosts={setFeedPosts} />;
 };
 
 export default Home;

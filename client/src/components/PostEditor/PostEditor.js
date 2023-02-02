@@ -3,21 +3,36 @@ import styled from "styled-components";
 
 //  hooks
 import { useForm } from "react-hook-form";
-import { useEditComment } from "./hooks/useEditComment";
 import { usePost } from "../../hooks/usePost";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEditPost } from "./hooks/useEditPost";
 
 //  validations
-import { commentSchema } from "../../validations/commentValidation";
+import { postSchema } from "../../validations/postValidation";
 
 //  styles
-import { TextAreaInput, Button } from "../common/common.style";
+import { Input, TextAreaInput, Button } from "../common/common.style";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 10px;
+  width: 100%;
+`;
+
+const TitleInput = styled(Input)`
+  font-size: 2rem;
+  font-weight: bold;
+  align-self: flex-start;
+
+  &:hover {
+    background-color: #dddddd;
+  }
+
+  &:focus {
+    cursor: pointer;
+  }
 `;
 
 const ButtonSection = styled.div`
@@ -36,15 +51,16 @@ const CancelButton = styled(Button)`
   padding: 1rem;
 `;
 
-const CommentEditor = ({ comment, setIsEditing }) => {
-  const { comments, setComments, setOpenEditor } = usePost();
-  const editComment = useEditComment();
+const PostEditor = ({ post, setIsEditing }) => {
+  const { setOpenEditor, setPost } = usePost();
+  const editPost = useEditPost();
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      content: comment.content,
+      title: post.title,
+      content: post.content,
     },
-    resolver: yupResolver(commentSchema),
+    resolver: yupResolver(postSchema),
   });
 
   const closeEditor = () => {
@@ -55,15 +71,9 @@ const CommentEditor = ({ comment, setIsEditing }) => {
     });
   };
 
-  const onSubmit = async (newComment) => {
-    const editedComment = await editComment(comment._id, newComment.content);
-    const index = comments.indexOf(comment);
-    const newComments = [
-      ...comments.slice(0, index),
-      editedComment,
-      ...comments.slice(index + 1),
-    ];
-    setComments(newComments);
+  const onSubmit = async (newPost) => {
+    const editedPost = await editPost(newPost);
+    setPost(editedPost);
     setIsEditing(false);
     setOpenEditor({
       isEditing: false,
@@ -72,8 +82,9 @@ const CommentEditor = ({ comment, setIsEditing }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
       <Wrapper>
+        <TitleInput id="title" readOnly={true} {...register("title")} />
         <TextAreaInput id="content" {...register("content")} />
         <ButtonSection>
           <CancelButton onClick={closeEditor}>Cancel</CancelButton>
@@ -84,4 +95,4 @@ const CommentEditor = ({ comment, setIsEditing }) => {
   );
 };
 
-export default CommentEditor;
+export default PostEditor;

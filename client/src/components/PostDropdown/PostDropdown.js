@@ -4,7 +4,7 @@ import styled from "styled-components";
 //  hooks
 import { useState } from "react";
 import { usePost } from "../../hooks/usePost";
-import { useDeleteComment } from "./hooks/useDeleteComment";
+import { useDeletePost } from "./hooks/useDeletePost";
 
 //  assets
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -65,20 +65,21 @@ const MenuItem = styled.div`
   }
 `;
 
-const CommentDropdown = ({ comment, setIsEditing }) => {
+const PostDropdown = ({ post, setIsEditing }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
-  const deleteComment = useDeleteComment();
-  const { setComments, openEditor, setOpenEditor } = usePost();
+  const { openEditor, setOpenEditor } = usePost();
+  const deletePost = useDeletePost();
 
   const handleOpen = () => {
     setOpenDropdown(!openDropdown);
+    setOpenEditor({
+      isEditing: true,
+      type: "post",
+    });
   };
 
-  const handleDelete = (_id) => {
-    deleteComment(comment._id);
-    setComments((prev) => {
-      return prev.filter((com) => com._id !== comment._id);
-    });
+  const handleDelete = () => {
+    deletePost();
   };
 
   const handleEdit = () => {
@@ -86,7 +87,7 @@ const CommentDropdown = ({ comment, setIsEditing }) => {
     setOpenDropdown(false);
     setOpenEditor({
       isEditing: true,
-      type: "comment",
+      type: "post",
     });
   };
 
@@ -119,4 +120,4 @@ const CommentDropdown = ({ comment, setIsEditing }) => {
   );
 };
 
-export default CommentDropdown;
+export default PostDropdown;

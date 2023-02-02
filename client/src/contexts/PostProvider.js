@@ -6,19 +6,23 @@ import { useGetPostComments } from "../components/CommentsSection/hooks/useGetPo
 const PostContext = createContext({});
 
 export const PostProvider = ({ children }) => {
-  const [openCommentEditor, setOpenCommentEditor] = useState(false);
-  const { post, postUser } = useGetPost();
+  const [openEditor, setOpenEditor] = useState({
+    isOpen: false,
+    type: "none",
+  });
+  const { post, postUser, setPost } = useGetPost();
   const { comments, setComments } = useGetPostComments();
 
   return (
     <PostContext.Provider
       value={{
         post,
+        setPost,
         postUser,
         comments,
         setComments,
-        openCommentEditor,
-        setOpenCommentEditor,
+        openEditor,
+        setOpenEditor,
       }}
     >
       {children}
