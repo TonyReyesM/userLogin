@@ -1,5 +1,5 @@
-const Comment = require("../../models/comment");
-const asyncHandler = require("express-async-handler");
+import Comment from "../../models/comment";
+import asyncHandler from "express-async-handler";
 
 const editComment = asyncHandler(async (req, res) => {
   const { _id, content, user } = req.body;
@@ -29,4 +29,4 @@ const editComment = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = editComment;
+export default editComment;

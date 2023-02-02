@@ -1,9 +1,5 @@
-const createComment = require("./createComment");
-const editComment = require("./editComment");
-const deleteComment = require("./deleteComment");
+import createComment from "./createComment";
+import editComment from "./editComment";
+import deleteComment from "./deleteComment";
 
-module.exports = {
-  createComment,
-  editComment,
-  deleteComment,
-};
+export { createComment, editComment, deleteComment };

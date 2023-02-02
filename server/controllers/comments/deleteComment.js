@@ -1,5 +1,5 @@
-const Comment = require("../../models/comment");
-const asyncHandler = require("express-async-handler");
+import Comment from "../../models/comment";
+import asyncHandler from "express-async-handler";
 
 const deleteComment = asyncHandler(async (req, res) => {
   const { _id, user } = req.body;
@@ -19,4 +19,4 @@ const deleteComment = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = deleteComment;
+export default deleteComment;

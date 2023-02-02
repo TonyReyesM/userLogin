@@ -1,5 +1,5 @@
-const Post = require("../../models/post");
-const asyncHandler = require("express-async-handler");
+import Post from "../../models/post";
+import asyncHandler from "express-async-handler";
 
 const deletePost = asyncHandler(async (req, res) => {
   const _id = req.params.id;
@@ -12,4 +12,4 @@ const deletePost = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = deletePost;
+export default deletePost;

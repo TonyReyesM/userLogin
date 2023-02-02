@@ -1,5 +1,5 @@
-const Post = require("../../models/post");
-const asyncHandler = require("express-async-handler");
+import Post from "../../models/post";
+import asyncHandler from "express-async-handler";
 
 const updatePost = asyncHandler(async (req, res) => {
   const _id = req.params.id;
@@ -28,4 +28,4 @@ const updatePost = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = updatePost;
+export default updatePost;
