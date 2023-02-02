@@ -1,5 +1,5 @@
 //  hooks
-import { useGetUserPosts } from "../../../components/UserPostsDisplay/hooks/useGetUserPosts";
+import { useGetUserPosts } from "../../../components/MultiplePostsDisplay/hooks/useGetUserPosts";
 
 //  components
 import PostCreator from "../../../components/PostForm/PostCreator";

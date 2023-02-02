@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 //  hooks
-import { useGetUserPosts } from "../../../components/UserPostsDisplay/hooks/useGetUserPosts";
+import { useGetUserPosts } from "../../../components/MultiplePostsDisplay/hooks/useGetUserPosts";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 

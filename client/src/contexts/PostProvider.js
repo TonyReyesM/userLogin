@@ -10,13 +10,14 @@ export const PostProvider = ({ children }) => {
     isOpen: false,
     type: "none",
   });
-  const { post, postUser } = useGetPost();
+  const { post, postUser, setPost } = useGetPost();
   const { comments, setComments } = useGetPostComments();
 
   return (
     <PostContext.Provider
       value={{
         post,
+        setPost,
         postUser,
         comments,
         setComments,

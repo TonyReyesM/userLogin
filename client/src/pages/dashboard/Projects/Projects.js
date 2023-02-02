@@ -1,5 +1,5 @@
 //  hooks
-import { useGetUserPosts } from "../../../components/UserPostsDisplay/hooks/useGetUserPosts";
+import { useGetUserPosts } from "../../../components/MultiplePostsDisplay/hooks/useGetUserPosts";
 
 //  styles
 import { Title } from "../../../components/common/common.style";

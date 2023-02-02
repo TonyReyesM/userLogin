@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { usePost } from "../../hooks/usePost";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEditPost } from "./hooks/useEditPost";
 
 //  validations
 import { postSchema } from "../../validations/postValidation";
@@ -51,7 +52,8 @@ const CancelButton = styled(Button)`
 `;
 
 const PostEditor = ({ post, setIsEditing }) => {
-  const { setOpenEditor } = usePost();
+  const { setOpenEditor, setPost } = usePost();
+  const editPost = useEditPost();
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -70,6 +72,8 @@ const PostEditor = ({ post, setIsEditing }) => {
   };
 
   const onSubmit = async (newPost) => {
+    const editedPost = await editPost(newPost);
+    setPost(editedPost);
     setIsEditing(false);
     setOpenEditor({
       isEditing: false,

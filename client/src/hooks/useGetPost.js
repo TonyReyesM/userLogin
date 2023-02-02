@@ -27,5 +27,5 @@ export const useGetPost = () => {
     getPost(id);
   }, []);
 
-  return { post, postUser };
+  return { post, postUser, setPost };
 };
