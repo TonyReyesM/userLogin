@@ -1,7 +1,6 @@
-const Post = require("../../models/post");
-const User = require("../../models/user");
-const asyncHandler = require("express-async-handler");
-const user = require("../../models/user");
+import User from "../../models/user";
+import Post from "../../models/post";
+import asyncHandler from "express-async-handler";
 
 const getPost = asyncHandler(async (req, res) => {
   const _id = req.params.id;
@@ -19,4 +18,4 @@ const getPost = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = getPost;
+export default getPost;

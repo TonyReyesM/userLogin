@@ -1,6 +1,6 @@
-const Comment = require("../../models/comment");
-const User = require("../../models/user");
-const asyncHandler = require("express-async-handler");
+import Comment from "../../models/comment";
+import User from "../../models/user";
+import asyncHandler from "express-async-handler";
 
 const getPostComments = asyncHandler(async (req, res) => {
   const id = req.params.id;
@@ -12,4 +12,4 @@ const getPostComments = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = getPostComments;
+export default getPostComments;

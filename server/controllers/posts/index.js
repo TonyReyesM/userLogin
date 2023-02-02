@@ -1,12 +1,12 @@
-const getPost = require("./getPost");
-const getUserPosts = require("./getUserPosts");
-const getFeedPosts = require("./getFeedPosts");
-const getPostComments = require("./getPostComments");
-const createPost = require("./createPost");
-const updatePost = require("./updatePost");
-const deletePost = require("./deletePost");
+import getPost from "./getPost";
+import getUserPosts from "./getUserPosts";
+import getFeedPosts from "./getFeedPosts";
+import getPostComments from "./getPostComments";
+import createPost from "./createPost";
+import updatePost from "./updatePost";
+import deletePost from "./deletePost";
 
-module.exports = {
+export {
   getPost,
   getUserPosts,
   getFeedPosts,
