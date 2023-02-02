@@ -1,6 +1,6 @@
-const User = require("../../models/user");
-const asyncHandler = require("express-async-handler");
-const bcrypt = require("bcryptjs");
+import User from "../../models/user";
+import asyncHandler from "express-async-handler";
+import bcrypt from "bcryptjs";
 
 // @desc    Update user password
 // @route   PUT /api/users/password/:id
@@ -43,4 +43,4 @@ const updateUserPassword = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = updateUserPassword;
+export default updateUserPassword;

@@ -1,5 +1,5 @@
-const User = require("../../models/user");
-const asyncHandler = require("express-async-handler");
+import User from "../../models/user";
+import asyncHandler from "express-async-handler";
 
 // @desc    Delete user
 // @route   DELETE /api/users/:id
@@ -15,4 +15,4 @@ const deleteUser = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = deleteUser;
+export default deleteUser;

@@ -1,5 +1,5 @@
-const User = require("../../models/user");
-const asyncHandler = require("express-async-handler");
+import User from "../../models/user";
+import asyncHandler from "express-async-handler";
 
 // @desc    Update user data
 // @route   POST /api/users/:id
@@ -33,4 +33,4 @@ const updateUser = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = updateUser;
+export default updateUser;

@@ -1,11 +1,10 @@
-const User = require("../../models/user");
-const RefreshToken = require("../../models/refreshToken");
-const asyncHandler = require("express-async-handler");
-const bcrypt = require("bcryptjs");
-
+import User from "../../models/user";
+import RefreshToken from "../../models/refreshToken";
+import asyncHandler from "express-async-handler";
+import bcrypt from "bcryptjs";
 //  utils
-const generateAccessToken = require("../../utils/generateAccessToken");
-const generateRefreshToken = require("../../utils/generateRefreshToken");
+import generateAccessToken from "../../utils/generateAccessToken";
+import generateRefreshToken from "../../utils/generateRefreshToken";
 
 // @desc    Register new user
 // @route   POST /api/users
@@ -58,4 +57,4 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = registerUser;
+export default registerUser;

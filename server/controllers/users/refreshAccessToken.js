@@ -1,9 +1,9 @@
-const RefreshToken = require("../../models/refreshToken");
-const asyncHandler = require("express-async-handler");
-const jwt = require("jsonwebtoken");
+import RefreshToken from "../../models/refreshToken";
+import asyncHandler from "express-async-handler";
+import jwt from "jsonwebtoken";
 
 //  utils
-const generateAccessToken = require("../../utils/generateAccessToken");
+import generateAccessToken from "../../utils/generateAccessToken";
 
 // @desc    Create new access token
 // @route   POST /api/users/token
@@ -31,4 +31,4 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = refreshAccessToken;
+export default refreshAccessToken;
