@@ -25,7 +25,7 @@ import MyPosts from "./pages/dashboard/Projects/MyPosts";
 import Post from "./pages/Post";
 import Account from "./pages/dashboard/Account";
 import Settings from "./pages/dashboard/Settings";
-import Search from "./pages/Search";
+import Search from "./pages/dashboard/Search";
 
 function App() {
   const { theme } = useTheme();
