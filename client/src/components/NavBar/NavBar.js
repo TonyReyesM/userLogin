@@ -101,7 +101,7 @@ const NavBar = () => {
         <Logo>LoginDude</Logo>
       </Link>
 
-      <SearchBar />
+      {auth.accessToken && <SearchBar />}
 
       <NavBarSection>
         {!auth.accessToken ? (

@@ -25,6 +25,7 @@ import MyPosts from "./pages/dashboard/Projects/MyPosts";
 import Post from "./pages/Post";
 import Account from "./pages/dashboard/Account";
 import Settings from "./pages/dashboard/Settings";
+import Search from "./pages/Search";
 
 function App() {
   const { theme } = useTheme();
@@ -61,6 +62,7 @@ function App() {
             <Route path="/dashboard/:id/create-post" element={<CreatePost />} />
             <Route path="/dashboard/:id/account" element={<Account />} />
             <Route path="/dashboard/:id/settings" element={<Settings />} />
+            <Route path="/dashboard/:id/search" element={<Search />} />
           </Route>
         </Route>
       </Routes>

@@ -1,12 +1,17 @@
 //  libraries
 import styled from "styled-components";
 
+//  hooks
+import { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+
 //  styles
 import { Input, Button } from "../common/common.style";
 
 const SearchWrapper = styled.div`
   display: flex;
-  width: 30%;
+  width: 35%;
 `;
 
 const SearchInput = styled(Input)`
@@ -20,16 +25,30 @@ const SearchInput = styled(Input)`
 `;
 
 const SearchButton = styled(Button)`
-  flex: 0.1;
+  flex: 0.5;
   border-radius: 0 0.6rem 0.6rem 0;
-  /* width: ; */
 `;
 
 const SearchBar = () => {
+  const [query, setQuery] = useState("");
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <SearchWrapper>
-      <SearchInput />
-      <SearchButton Button>Search</SearchButton>
+      <SearchInput
+        onChange={(e) => {
+          setQuery(e.target.value);
+        }}
+        value={query}
+      />
+      <SearchButton
+        onClick={() =>
+          navigate(`/dashboard/${auth.user._id}/search?query=${query}`)
+        }
+      >
+        Search
+      </SearchButton>
     </SearchWrapper>
   );
 };

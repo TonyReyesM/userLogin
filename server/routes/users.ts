@@ -5,6 +5,7 @@ import {
   loginUser,
   logoutUser,
   getUser,
+  getUsers,
   updateUser,
   deleteUser,
   updateUserPassword,
@@ -21,6 +22,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.delete("/logout", logoutUser);
 router.get("/me", protect, getUser);
+router.get("/getUsers/:query", protect, getUsers);
 router.put("/:id", protect, updateUser);
 router.put("/password/:id", protect, updateUserPassword);
 router.delete("/:id", protect, deleteUser);
