@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 //  components
 import { Link } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar";
 
 //  hooks
 import { useNavigate } from "react-router-dom";
@@ -99,6 +100,8 @@ const NavBar = () => {
       <Link to="/" style={linkStyle}>
         <Logo>LoginDude</Logo>
       </Link>
+
+      <SearchBar />
 
       <NavBarSection>
         {!auth.accessToken ? (
